@@ -1,0 +1,312 @@
+{
+  "task1_logs_checked": 51,
+  "task3_mixed_logs_rejected": 6,
+  "records": [
+    {
+      "log": "results/task1/full/Trace1-003/ip_stride.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/full/Trace1-003/spp.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/full/Trace2-001/ip_stride.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/full/Trace2-001/spp.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/full/Trace3-002/ip_stride.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/full/Trace3-002/spp.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/smoke/Trace1-003.log",
+      "warmup": 1000000,
+      "measured": 1000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/smoke/Trace2-001.log",
+      "warmup": 1000000,
+      "measured": 1000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/smoke/Trace3-002.log",
+      "warmup": 1000000,
+      "measured": 1000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/style-check/Trace1-003.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/style-check/Trace2-001.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/style-check/Trace3-002.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u2-p1-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u2-p1-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u2-p1-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u2-p2-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u2-p2-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u2-p2-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u4-p1-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u4-p1-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u4-p1-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u4-p2-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u4-p2-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace1-003/u4-p2-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u2-p1-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u2-p1-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u2-p1-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u2-p2-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u2-p2-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u2-p2-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u4-p1-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u4-p1-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u4-p1-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u4-p2-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u4-p2-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace2-001/u4-p2-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u2-p1-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u2-p1-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u2-p1-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u2-p2-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u2-p2-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u2-p2-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u4-p1-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u4-p1-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u4-p1-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u4-p2-a1-2-4.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u4-p2-a25-50-75.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task1/sweep/Trace3-002/u4-p2-a3-6-12.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task2/full/Trace1-003/lru.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task2/full/Trace2-001/lru.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    },
+    {
+      "log": "results/task2/full/Trace3-002/lru.log",
+      "warmup": 25000000,
+      "measured": 25000000,
+      "replacement": "LRU at all eight levels"
+    }
+  ]
+}

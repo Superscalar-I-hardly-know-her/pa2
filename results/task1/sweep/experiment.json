@@ -1,0 +1,130 @@
+{
+  "warmup": 25000000,
+  "measured": 25000000,
+  "binary": "bin/hashed_perceptron-no-spp-no-no-no-no-no-lru-lru-lru-lru-lru-lru-lru-lru-1core-task1-spp-compiler-check",
+  "binary_sha256": "ac828d802b4b49e58fd47db8bc88b9722e276719c59c509acf20cadb214cd530",
+  "compiler": "c++\nApple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "accuracy_denominator": "all issued prefetch requests",
+  "configurations": [
+    {
+      "name": "u2-p1-a25-50-75",
+      "uniform": 2,
+      "pattern": 1,
+      "accuracy": [
+        25,
+        50,
+        75
+      ]
+    },
+    {
+      "name": "u2-p2-a25-50-75",
+      "uniform": 2,
+      "pattern": 2,
+      "accuracy": [
+        25,
+        50,
+        75
+      ]
+    },
+    {
+      "name": "u4-p1-a25-50-75",
+      "uniform": 4,
+      "pattern": 1,
+      "accuracy": [
+        25,
+        50,
+        75
+      ]
+    },
+    {
+      "name": "u4-p2-a25-50-75",
+      "uniform": 4,
+      "pattern": 2,
+      "accuracy": [
+        25,
+        50,
+        75
+      ]
+    },
+    {
+      "name": "u2-p1-a3-6-12",
+      "uniform": 2,
+      "pattern": 1,
+      "accuracy": [
+        3,
+        6,
+        12
+      ]
+    },
+    {
+      "name": "u2-p2-a3-6-12",
+      "uniform": 2,
+      "pattern": 2,
+      "accuracy": [
+        3,
+        6,
+        12
+      ]
+    },
+    {
+      "name": "u4-p1-a3-6-12",
+      "uniform": 4,
+      "pattern": 1,
+      "accuracy": [
+        3,
+        6,
+        12
+      ]
+    },
+    {
+      "name": "u4-p2-a3-6-12",
+      "uniform": 4,
+      "pattern": 2,
+      "accuracy": [
+        3,
+        6,
+        12
+      ]
+    },
+    {
+      "name": "u2-p1-a1-2-4",
+      "uniform": 2,
+      "pattern": 1,
+      "accuracy": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "name": "u2-p2-a1-2-4",
+      "uniform": 2,
+      "pattern": 2,
+      "accuracy": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "name": "u4-p1-a1-2-4",
+      "uniform": 4,
+      "pattern": 1,
+      "accuracy": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "name": "u4-p2-a1-2-4",
+      "uniform": 4,
+      "pattern": 2,
+      "accuracy": [
+        1,
+        2,
+        4
+      ]
+    }
+  ]
+}

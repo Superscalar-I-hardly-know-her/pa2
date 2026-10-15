@@ -1,24 +1,310 @@
 #include "cache.h"
+#include <algorithm>
+#include <cstdlib>
+#include <limits>
 
+#define IP_TRACKER_SETS 16
+#define IP_TRACKER_WAYS 4
+#define PATTERN_TABLE_SIZE 256
+#define STRIDE_HISTORY_LENGTH 4
+#define MAX_STRIDE 63
+#define SIGNATURE_MASK ((1u << 28) - 1)
 
-void CACHE::l1d_prefetcher_initialize() 
+class IP_TRACKER {
+  public:
+    bool valid;
+    uint64_t ip;
+
+    // the last cache-line address and stride observed for this IP
+    uint64_t last_cl_addr;
+    int last_stride;
+    unsigned uniform_confidence;
+
+    // four seven-bit strides form the signature used for non-uniform prediction
+    uint32_t signature;
+    unsigned history_length;
+
+    // use LRU to evict old trackers within each four-way set
+    unsigned lru;
+
+    IP_TRACKER () {
+        valid = false;
+        ip = 0;
+        last_cl_addr = 0;
+        last_stride = 0;
+        uniform_confidence = 0;
+        signature = 0;
+        history_length = 0;
+        lru = 0;
+    };
+};
+
+class STRIDE_PATTERN {
+  public:
+    bool valid;
+
+    // full tags prevent unrelated IPs or histories from matching an entry
+    uint64_t ip;
+    uint32_t signature;
+    int next_stride;
+    unsigned confidence;
+
+    STRIDE_PATTERN () {
+        valid = false;
+        ip = 0;
+        signature = 0;
+        next_stride = 0;
+        confidence = 0;
+    };
+};
+
+IP_TRACKER trackers[NUM_CPUS][IP_TRACKER_SETS][IP_TRACKER_WAYS];
+STRIDE_PATTERN patterns[NUM_CPUS][PATTERN_TABLE_SIZE];
+unsigned uniform_threshold, pattern_threshold, accuracy_thresholds[3];
+unsigned prefetch_degree[NUM_CPUS], demand_accesses[NUM_CPUS];
+uint64_t uniform_predictions[NUM_CPUS], pattern_predictions[NUM_CPUS];
+
+unsigned read_parameter(const char *name, unsigned default_value, unsigned maximum)
 {
-    std::cout << "------------------------------------------------" << std::endl;
-    std::cout << "        Stride Pattern Prefetcher (SPP)         " << std::endl;
-    std::cout << "------------------------------------------------" << std::endl;
+    const char *value = std::getenv(name);
+    if (!value)
+        return default_value;
+
+    char *end;
+    long result = std::strtol(value, &end, 10);
+    if (!*value || *end || result < 1 || result > maximum) {
+        cerr << "Invalid " << name << endl;
+        std::exit(1);
+    }
+    return unsigned(result);
+}
+
+// keep only the most recent four strides, including their signs
+uint32_t update_signature(uint32_t signature, int stride)
+{
+    return ((signature << 7) | (unsigned(stride) & 127)) & SIGNATURE_MASK;
+}
+
+unsigned get_pattern_index(uint64_t ip, uint32_t signature)
+{
+    uint64_t hash = ip ^ (ip >> 17) ^ signature ^ (signature >> 11);
+    return hash % PATTERN_TABLE_SIZE;
+}
+
+void train_pattern(unsigned cpu, uint64_t ip, uint32_t signature, int stride)
+{
+    unsigned pattern_index = get_pattern_index(ip, signature);
+    STRIDE_PATTERN &pattern = patterns[cpu][pattern_index];
+    bool pattern_hit = pattern.valid && pattern.ip == ip && pattern.signature == signature;
+
+    if (!pattern_hit || pattern.confidence == 0) {
+        pattern.valid = true;
+        pattern.ip = ip;
+        pattern.signature = signature;
+        pattern.next_stride = stride;
+        pattern.confidence = 1;
+    }
+    else if (pattern.next_stride == stride)
+        pattern.confidence = std::min(pattern.confidence + 1, 3u);
+    else
+        pattern.confidence--;
+}
+
+void CACHE::l1d_prefetcher_initialize()
+{
+    uniform_threshold = read_parameter("SPP_UNIFORM_CONF", 4, 7);
+    pattern_threshold = read_parameter("SPP_PATTERN_CONF", 2, 3);
+    accuracy_thresholds[0] = read_parameter("SPP_ACCURACY_LOW", 25, 99);
+    accuracy_thresholds[1] = read_parameter("SPP_ACCURACY_MID", 50, 99);
+    accuracy_thresholds[2] = read_parameter("SPP_ACCURACY_HIGH", 75, 100);
+    if (!(accuracy_thresholds[0] < accuracy_thresholds[1] &&
+          accuracy_thresholds[1] < accuracy_thresholds[2])) {
+        cerr << "SPP accuracy boundaries must increase" << endl;
+        std::exit(1);
+    }
+
+    for (int set=0; set<IP_TRACKER_SETS; set++) {
+        for (int i=0; i<IP_TRACKER_WAYS; i++)
+            trackers[cpu][set][i] = IP_TRACKER();
+    }
+    for (int i=0; i<PATTERN_TABLE_SIZE; i++)
+        patterns[cpu][i] = STRIDE_PATTERN();
+
+    prefetch_degree[cpu] = 2;
+    demand_accesses[cpu] = 0;
+    uniform_predictions[cpu] = 0;
+    pattern_predictions[cpu] = 0;
+    cout << "SPP uniform_conf=" << uniform_threshold
+         << " pattern_conf=" << pattern_threshold << " accuracy="
+         << accuracy_thresholds[0] << ',' << accuracy_thresholds[1] << ','
+         << accuracy_thresholds[2] << endl;
 }
 
 void CACHE::l1d_prefetcher_operate(uint64_t addr, uint64_t ip, uint8_t cache_hit, uint8_t type, uint8_t critical_ip_flag)
 {
-   
+    // train only on demand loads, never on the prefetches we generate
+    if (type != LOAD)
+        return;
+
+    // adjust the degree every 4096 demand accesses, after a sufficient sample
+    // use cumulative counts so delayed useful hits survive an update boundary
+    demand_accesses[cpu]++;
+    if (demand_accesses[cpu] == 4096) {
+        demand_accesses[cpu] = 0;
+        if (pf_issued >= 128) {
+            double accuracy = 100.0 * pf_useful / pf_issued;
+            if (accuracy < accuracy_thresholds[0])
+                prefetch_degree[cpu] = 1;
+            else if (accuracy < accuracy_thresholds[1])
+                prefetch_degree[cpu] = 2;
+            else if (accuracy < accuracy_thresholds[2])
+                prefetch_degree[cpu] = 4;
+            else
+                prefetch_degree[cpu] = 8;
+        }
+    }
+
+    // check for a tracker hit, as in IP-stride, using a set and a full IP tag
+    uint64_t cl_addr = addr >> LOG2_BLOCK_SIZE;
+    unsigned set = (ip ^ (ip >> 4)) % IP_TRACKER_SETS;
+
+    int index;
+    for (index=0; index<IP_TRACKER_WAYS; index++) {
+        if (trackers[cpu][set][index].valid && trackers[cpu][set][index].ip == ip)
+            break;
+    }
+
+    // this is a new IP: use an empty tracker, or evict the least recently used
+    bool new_ip = (index == IP_TRACKER_WAYS);
+    if (new_ip) {
+        index = 0;
+        for (int i=0; i<IP_TRACKER_WAYS; i++) {
+            if (!trackers[cpu][set][i].valid) {
+                index = i;
+                break;
+            }
+            if (trackers[cpu][set][i].lru > trackers[cpu][set][index].lru)
+                index = i;
+        }
+
+        unsigned old_lru;
+        if (trackers[cpu][set][index].valid)
+            old_lru = trackers[cpu][set][index].lru;
+        else
+            old_lru = IP_TRACKER_WAYS;
+
+        trackers[cpu][set][index] = IP_TRACKER();
+        trackers[cpu][set][index].lru = old_lru;
+        trackers[cpu][set][index].valid = true;
+        trackers[cpu][set][index].ip = ip;
+        trackers[cpu][set][index].last_cl_addr = cl_addr;
+    }
+
+    IP_TRACKER &tracker = trackers[cpu][set][index];
+
+    // refresh LRU even for a new IP or another access to the same cache line
+    for (int i=0; i<IP_TRACKER_WAYS; i++) {
+        if (i != index && trackers[cpu][set][i].valid && trackers[cpu][set][i].lru < tracker.lru)
+            trackers[cpu][set][i].lru++;
+    }
+    tracker.lru = 0;
+    if (new_ip)
+        return;
+
+    // calculate the stride between the current address and the last address
+    int64_t stride = 0;
+    if (cl_addr > tracker.last_cl_addr)
+        stride = cl_addr - tracker.last_cl_addr;
+    else {
+        stride = tracker.last_cl_addr - cl_addr;
+        stride *= -1;
+    }
+
+    // same-line accesses do not add zero strides to the history
+    if (stride == 0)
+        return;
+
+    tracker.last_cl_addr = cl_addr;
+
+    // strides must fit the seven-bit encoding; a large jump starts fresh history
+    if (stride < -MAX_STRIDE || stride > MAX_STRIDE) {
+        tracker.history_length = 0;
+        tracker.signature = 0;
+        tracker.uniform_confidence = 0;
+        tracker.last_stride = 0;
+        return;
+    }
+
+    // train the old signature with the stride that actually followed it
+    // keep training this table even when uniform prediction is being used
+    if (tracker.history_length == STRIDE_HISTORY_LENGTH)
+        train_pattern(cpu, ip, tracker.signature, stride);
+
+    // a uniform pattern needs consecutive equal strides; a mismatch drops back immediately
+    if (stride == tracker.last_stride)
+        tracker.uniform_confidence = std::min(tracker.uniform_confidence + 1, 7u);
+    else
+        tracker.uniform_confidence = 1;
+
+    tracker.last_stride = stride;
+    tracker.signature = update_signature(tracker.signature, stride);
+    tracker.history_length = std::min(tracker.history_length + 1, unsigned(STRIDE_HISTORY_LENGTH));
+
+    // prefer a confident uniform stride; otherwise follow the learned pattern
+    bool uniform = tracker.uniform_confidence >= uniform_threshold;
+    uint64_t pf_cl_addr = cl_addr;
+    uint32_t pf_signature = tracker.signature;
+
+    for (unsigned i=0; i<prefetch_degree[cpu]; i++) {
+        int next_stride = stride;
+        if (!uniform) {
+            if (tracker.history_length < STRIDE_HISTORY_LENGTH)
+                break;
+
+            unsigned pattern_index = get_pattern_index(ip, pf_signature);
+            const STRIDE_PATTERN &pattern = patterns[cpu][pattern_index];
+            if (!pattern.valid || pattern.ip != ip || pattern.signature != pf_signature || pattern.confidence < pattern_threshold)
+                break;
+
+            next_stride = pattern.next_stride;
+        }
+
+        int64_t next_cl_addr = int64_t(pf_cl_addr) + next_stride;
+        if (next_cl_addr < 0 || uint64_t(next_cl_addr) > (std::numeric_limits<uint64_t>::max() >> LOG2_BLOCK_SIZE))
+            break;
+
+        pf_cl_addr = uint64_t(next_cl_addr);
+        uint64_t pf_address = pf_cl_addr << LOG2_BLOCK_SIZE;
+
+        // only issue a prefetch if the prefetch address is in the same 4 KB page
+        // as the current demand access address
+        if ((pf_address >> LOG2_PAGE_SIZE) != (addr >> LOG2_PAGE_SIZE))
+            break;
+
+        if (pf_cl_addr == cl_addr)
+            break;
+
+        if (!prefetch_line(ip, addr, pf_address, FILL_L1, 0))
+            break;
+
+        if (uniform)
+            uniform_predictions[cpu]++;
+        else
+            pattern_predictions[cpu]++;
+
+        // look ahead using a temporary signature; never train on predictions
+        pf_signature = update_signature(pf_signature, next_stride);
+    }
 }
 
 void CACHE::l1d_prefetcher_cache_fill(uint64_t v_addr, uint64_t addr, uint32_t set, uint32_t way, uint8_t prefetch, uint64_t v_evicted_addr, uint64_t evicted_addr, uint32_t metadata_in)
 {
-	return; //metadata_in;
+    return;
 }
 
 void CACHE::l1d_prefetcher_final_stats()
 {
-
+    cout << "SPP degree=" << prefetch_degree[cpu] << " uniform_predictions="
+         << uniform_predictions[cpu] << " pattern_predictions="
+         << pattern_predictions[cpu] << endl;
 }

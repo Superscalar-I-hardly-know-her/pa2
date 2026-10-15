@@ -1,0 +1,41 @@
+{
+  "geometric_mean_speedup": 1.0020764811348981,
+  "rows": [
+    {
+      "trace": "Trace1-003",
+      "baseline_ipc": 0.2318281654770528,
+      "spp_ipc": 0.23251936395685902,
+      "speedup": 1.0029815120970478,
+      "baseline_l1d_load_mpki": 10.6784,
+      "spp_l1d_load_mpki": 10.4034,
+      "prefetch_accuracy": 0.08729029781661361,
+      "issued": 88578,
+      "useful": 7732,
+      "coverage": 0.025752921786035388
+    },
+    {
+      "trace": "Trace2-001",
+      "baseline_ipc": 0.25153408873846617,
+      "spp_ipc": 0.2518839939647388,
+      "speedup": 1.0013910847155054,
+      "baseline_l1d_load_mpki": 13.5367,
+      "spp_l1d_load_mpki": 13.4056,
+      "prefetch_accuracy": 0.04493720073203139,
+      "issued": 79778,
+      "useful": 3585,
+      "coverage": 0.009684782849586626
+    },
+    {
+      "trace": "Trace3-002",
+      "baseline_ipc": 0.3818477907112504,
+      "spp_ipc": 0.3825570781258646,
+      "speedup": 1.0018575134696812,
+      "baseline_l1d_load_mpki": 3.40356,
+      "spp_l1d_load_mpki": 3.348,
+      "prefetch_accuracy": 0.019292898905209736,
+      "issued": 76453,
+      "useful": 1475,
+      "coverage": 0.01632408419419673
+    }
+  ]
+}

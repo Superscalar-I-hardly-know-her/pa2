@@ -1,0 +1,116 @@
+{
+  "binary_sha256": "1b6ccb023479ff63713d54b61c86634dacedaa51cb5eca8a65f6c2566397fa00",
+  "compiler": "c++\nApple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "warmup": 25000000,
+  "measured": 25000000,
+  "results": [
+    {
+      "trace": "Trace1-003",
+      "command": [
+        "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/bin/hashed_perceptron-no-spp-no-no-no-no-no-lru-lru-lru-lru-lru-lru-lru-lru-1core-task1-spp-style",
+        "-warmup_instructions",
+        "25000000",
+        "-simulation_instructions",
+        "25000000",
+        "-traces",
+        "traces/Trace1-003.gz"
+      ],
+      "metrics": {
+        "instructions": 25000000,
+        "cycles": 107161464,
+        "ipc": 0.2332928187692546,
+        "l1d_load_mpki": 9.78584,
+        "l1i_load_mpki": 14.4844,
+        "l2c_load_mpki": 17.0066,
+        "llc_load_mpki": 11.87288,
+        "requested": 691389,
+        "issued": 690854,
+        "useful": 29515,
+        "useless": 19705,
+        "lower_level_prefetches": 52520,
+        "timely": 29515,
+        "late": 3148,
+        "dropped": 0,
+        "simulator_accuracy": 0.561976389946687,
+        "useful_per_issued": 0.042722485503449356,
+        "prefetch_accesses": 311708,
+        "prefetch_hits": 262469,
+        "prefetch_misses": 49239,
+        "prefetch_hit_fraction": 0.8420348531317772
+      },
+      "all_cache_counters_match": true
+    },
+    {
+      "trace": "Trace2-001",
+      "command": [
+        "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/bin/hashed_perceptron-no-spp-no-no-no-no-no-lru-lru-lru-lru-lru-lru-lru-lru-1core-task1-spp-style",
+        "-warmup_instructions",
+        "25000000",
+        "-simulation_instructions",
+        "25000000",
+        "-traces",
+        "traces/Trace2-001.gz"
+      ],
+      "metrics": {
+        "instructions": 25000001,
+        "cycles": 98878475,
+        "ipc": 0.2528356247403694,
+        "l1d_load_mpki": 13.157999473680022,
+        "l1i_load_mpki": 40.023438399062464,
+        "l2c_load_mpki": 27.367718905291245,
+        "llc_load_mpki": 7.854519685819213,
+        "requested": 490782,
+        "issued": 489938,
+        "useful": 12406,
+        "useless": 12173,
+        "lower_level_prefetches": 24920,
+        "timely": 12406,
+        "late": 311,
+        "dropped": 0,
+        "simulator_accuracy": 0.4978330658105939,
+        "useful_per_issued": 0.025321571300858475,
+        "prefetch_accesses": 228978,
+        "prefetch_hits": 204380,
+        "prefetch_misses": 24598,
+        "prefetch_hit_fraction": 0.892574832516661
+      },
+      "all_cache_counters_match": true
+    },
+    {
+      "trace": "Trace3-002",
+      "command": [
+        "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/bin/hashed_perceptron-no-spp-no-no-no-no-no-lru-lru-lru-lru-lru-lru-lru-lru-1core-task1-spp-style",
+        "-warmup_instructions",
+        "25000000",
+        "-simulation_instructions",
+        "25000000",
+        "-traces",
+        "traces/Trace3-002.gz"
+      ],
+      "metrics": {
+        "instructions": 25000001,
+        "cycles": 65039052,
+        "ipc": 0.38438446181534136,
+        "l1d_load_mpki": 3.207999871680005,
+        "l1i_load_mpki": 2.1251999149920033,
+        "l2c_load_mpki": 3.661199853552006,
+        "llc_load_mpki": 2.8678798852848044,
+        "requested": 268248,
+        "issued": 268248,
+        "useful": 5519,
+        "useless": 8869,
+        "lower_level_prefetches": 17514,
+        "timely": 5519,
+        "late": 3144,
+        "dropped": 0,
+        "simulator_accuracy": 0.3151193331049446,
+        "useful_per_issued": 0.020574244728758462,
+        "prefetch_accesses": 113884,
+        "prefetch_hits": 99514,
+        "prefetch_misses": 14370,
+        "prefetch_hit_fraction": 0.8738189736925293
+      },
+      "all_cache_counters_match": true
+    }
+  ]
+}

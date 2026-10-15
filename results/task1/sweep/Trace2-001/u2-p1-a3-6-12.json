@@ -1,0 +1,54 @@
+{
+  "signature": {
+    "config": {
+      "name": "u2-p1-a3-6-12",
+      "uniform": 2,
+      "pattern": 1,
+      "accuracy": [
+        3,
+        6,
+        12
+      ]
+    },
+    "binary_sha256": "ac828d802b4b49e58fd47db8bc88b9722e276719c59c509acf20cadb214cd530",
+    "trace": "traces/Trace2-001.gz",
+    "size": 5256405095,
+    "mtime_ns": 1792054118708675781,
+    "warmup": 25000000,
+    "measured": 25000000
+  },
+  "seconds": 90.986353167,
+  "row": {
+    "trace": "Trace2-001",
+    "name": "u2-p1-a3-6-12",
+    "uniform": 2,
+    "pattern": 1,
+    "accuracy": "3/6/12",
+    "instructions": 25000001,
+    "cycles": 99048017,
+    "ipc": 0.2524028421487732,
+    "l1d_load_mpki": 13.25415946983362,
+    "l1i_load_mpki": 40.023438399062464,
+    "l2c_load_mpki": 27.326838906926444,
+    "llc_load_mpki": 7.955919681763213,
+    "requested": 249219,
+    "issued": 249219,
+    "useful": 8692,
+    "useless": 4926,
+    "lower_level_prefetches": 14075,
+    "timely": 8692,
+    "late": 445,
+    "dropped": 0,
+    "simulator_accuracy": 0.6175488454706927,
+    "useful_per_issued": 0.03487695560932352,
+    "prefetch_accesses": 115529,
+    "prefetch_hits": 101901,
+    "prefetch_misses": 13628,
+    "prefetch_hit_fraction": 0.8820382761038355,
+    "speedup": 1.003453819777129,
+    "vs_default": 1.0020598696084952,
+    "vs_ip_stride": 1.0045360019676115,
+    "coverage": 0.02087070093996468,
+    "final_degree": 2
+  }
+}

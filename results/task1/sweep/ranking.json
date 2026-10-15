@@ -1,0 +1,218 @@
+[
+  {
+    "name": "u2-p1-a1-2-4",
+    "uniform": 2,
+    "pattern": 1,
+    "accuracy": [
+      1,
+      2,
+      4
+    ],
+    "speedup": 1.0060449292856652,
+    "vs_default": 1.0039602248186412,
+    "vs_ip_stride": 1.0041609025883984,
+    "l1d_load_mpki": 7.447447308373814,
+    "simulator_accuracy": 0.4450672305894748,
+    "useful_per_issued": 0.028129176716795393,
+    "issued": 449456.809613814,
+    "min_speedup": 1.0051743921010108
+  },
+  {
+    "name": "u2-p2-a1-2-4",
+    "uniform": 2,
+    "pattern": 2,
+    "accuracy": [
+      1,
+      2,
+      4
+    ],
+    "speedup": 1.0055813541622898,
+    "vs_default": 1.0034976103055748,
+    "vs_ip_stride": 1.0036981956050863,
+    "l1d_load_mpki": 7.470676778103317,
+    "simulator_accuracy": 0.43577453897016205,
+    "useful_per_issued": 0.028040315159739957,
+    "issued": 429590.2945576749,
+    "min_speedup": 1.0047676215891048
+  },
+  {
+    "name": "u2-p1-a3-6-12",
+    "uniform": 2,
+    "pattern": 1,
+    "accuracy": [
+      3,
+      6,
+      12
+    ],
+    "speedup": 1.004771575163539,
+    "vs_default": 1.00268950931329,
+    "vs_ip_stride": 1.0028899330845844,
+    "l1d_load_mpki": 7.569222342617325,
+    "simulator_accuracy": 0.49862420238999133,
+    "useful_per_issued": 0.03622031644004239,
+    "issued": 236447.06114379843,
+    "min_speedup": 1.003453819777129
+  },
+  {
+    "name": "u2-p2-a3-6-12",
+    "uniform": 2,
+    "pattern": 2,
+    "accuracy": [
+      3,
+      6,
+      12
+    ],
+    "speedup": 1.0040480629402144,
+    "vs_default": 1.001967496336291,
+    "vs_ip_stride": 1.002167775787173,
+    "l1d_load_mpki": 7.596035286943624,
+    "simulator_accuracy": 0.48370772274043333,
+    "useful_per_issued": 0.03544298712195925,
+    "issued": 216272.45578677976,
+    "min_speedup": 1.0018752252742504
+  },
+  {
+    "name": "u2-p1-a25-50-75",
+    "uniform": 2,
+    "pattern": 1,
+    "accuracy": [
+      25,
+      50,
+      75
+    ],
+    "speedup": 1.0039705042108276,
+    "vs_default": 1.00189009832242,
+    "vs_ip_stride": 1.0020903623025088,
+    "l1d_load_mpki": 7.644088524285443,
+    "simulator_accuracy": 0.49655667346212706,
+    "useful_per_issued": 0.04229169993941758,
+    "issued": 148622.27781915496,
+    "min_speedup": 1.0022103862014768
+  },
+  {
+    "name": "u2-p2-a25-50-75",
+    "uniform": 2,
+    "pattern": 2,
+    "accuracy": [
+      25,
+      50,
+      75
+    ],
+    "speedup": 1.0036825163694674,
+    "vs_default": 1.0016027072432137,
+    "vs_ip_stride": 1.0018029137777988,
+    "l1d_load_mpki": 7.66345762293656,
+    "simulator_accuracy": 0.4858372725787539,
+    "useful_per_issued": 0.041952094407060915,
+    "issued": 138343.49841639667,
+    "min_speedup": 1.0020222801355974
+  },
+  {
+    "name": "u4-p1-a1-2-4",
+    "uniform": 4,
+    "pattern": 1,
+    "accuracy": [
+      1,
+      2,
+      4
+    ],
+    "speedup": 1.003402874723869,
+    "vs_default": 1.0013236450649643,
+    "vs_ip_stride": 1.0015237958188778,
+    "l1d_load_mpki": 7.625765069749954,
+    "simulator_accuracy": 0.5335458929536657,
+    "useful_per_issued": 0.027638504982677333,
+    "issued": 249440.1659460995,
+    "min_speedup": 1.0021897200799208
+  },
+  {
+    "name": "u4-p1-a3-6-12",
+    "uniform": 4,
+    "pattern": 1,
+    "accuracy": [
+      3,
+      6,
+      12
+    ],
+    "speedup": 1.002858715023505,
+    "vs_default": 1.0007806129605208,
+    "vs_ip_stride": 1.0009806551698237,
+    "l1d_load_mpki": 7.692942399397172,
+    "simulator_accuracy": 0.5718627924403953,
+    "useful_per_issued": 0.03644608636551187,
+    "issued": 140740.48828593493,
+    "min_speedup": 1.0022043530206894
+  },
+  {
+    "name": "u4-p2-a1-2-4",
+    "uniform": 4,
+    "pattern": 2,
+    "accuracy": [
+      1,
+      2,
+      4
+    ],
+    "speedup": 1.002704128411311,
+    "vs_default": 1.0006263466793495,
+    "vs_ip_stride": 1.0008263580529553,
+    "l1d_load_mpki": 7.6674643765232995,
+    "simulator_accuracy": 0.5329801600444833,
+    "useful_per_issued": 0.026990312589772046,
+    "issued": 215090.22528627492,
+    "min_speedup": 1.0013883404130168
+  },
+  {
+    "name": "u4-p1-a25-50-75",
+    "uniform": 4,
+    "pattern": 1,
+    "accuracy": [
+      25,
+      50,
+      75
+    ],
+    "speedup": 1.0025393735897232,
+    "vs_default": 1.000461933259127,
+    "vs_ip_stride": 1.0006619117687632,
+    "l1d_load_mpki": 7.728348913003385,
+    "simulator_accuracy": 0.5602942771678326,
+    "useful_per_issued": 0.04361551006621186,
+    "issued": 95353.93102347048,
+    "min_speedup": 1.0018910205675526
+  },
+  {
+    "name": "u4-p2-a3-6-12",
+    "uniform": 4,
+    "pattern": 2,
+    "accuracy": [
+      3,
+      6,
+      12
+    ],
+    "speedup": 1.0023527219231325,
+    "vs_default": 1.0002756683680687,
+    "vs_ip_stride": 1.0004756096459282,
+    "l1d_load_mpki": 7.723427245698287,
+    "simulator_accuracy": 0.5699987172955101,
+    "useful_per_issued": 0.035255645609784086,
+    "issued": 122430.56547999884,
+    "min_speedup": 1.001431817179279
+  },
+  {
+    "name": "u4-p2-a25-50-75",
+    "uniform": 4,
+    "pattern": 2,
+    "accuracy": [
+      25,
+      50,
+      75
+    ],
+    "speedup": 1.0020764811348981,
+    "vs_default": 1.0,
+    "vs_ip_stride": 1.0001998861755637,
+    "l1d_load_mpki": 7.75798373509536,
+    "simulator_accuracy": 0.5546070941328716,
+    "useful_per_issued": 0.04229832402311565,
+    "issued": 81445.64158589754,
+    "min_speedup": 1.0013910847155054
+  }
+]

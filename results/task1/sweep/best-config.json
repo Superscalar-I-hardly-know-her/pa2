@@ -1,0 +1,18 @@
+{
+  "name": "u2-p1-a1-2-4",
+  "uniform": 2,
+  "pattern": 1,
+  "accuracy": [
+    1,
+    2,
+    4
+  ],
+  "speedup": 1.0060449292856652,
+  "vs_default": 1.0039602248186412,
+  "vs_ip_stride": 1.0041609025883984,
+  "l1d_load_mpki": 7.447447308373814,
+  "simulator_accuracy": 0.4450672305894748,
+  "useful_per_issued": 0.028129176716795393,
+  "issued": 449456.809613814,
+  "min_speedup": 1.0051743921010108
+}

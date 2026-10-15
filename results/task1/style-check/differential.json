@@ -1,0 +1,127 @@
+{
+  "before_sha256": "f7e193526f432fb87a3e32af67de4b6cb31200315656beb427aaf91d0b204b24",
+  "after_sha256": "2a5776dae7bc3ba4dc64e637a7b37655485d171b470fa51918f40fa13466443a",
+  "accesses_per_config": 200000,
+  "checks": [
+    {
+      "uniform": 2,
+      "pattern": 1,
+      "accuracy": [
+        25,
+        50,
+        75
+      ],
+      "output": "SPP uniform_conf=2 pattern_conf=1 accuracy=25,50,75\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 2,
+      "pattern": 2,
+      "accuracy": [
+        25,
+        50,
+        75
+      ],
+      "output": "SPP uniform_conf=2 pattern_conf=2 accuracy=25,50,75\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 4,
+      "pattern": 1,
+      "accuracy": [
+        25,
+        50,
+        75
+      ],
+      "output": "SPP uniform_conf=4 pattern_conf=1 accuracy=25,50,75\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 4,
+      "pattern": 2,
+      "accuracy": [
+        25,
+        50,
+        75
+      ],
+      "output": "SPP uniform_conf=4 pattern_conf=2 accuracy=25,50,75\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 2,
+      "pattern": 1,
+      "accuracy": [
+        3,
+        6,
+        12
+      ],
+      "output": "SPP uniform_conf=2 pattern_conf=1 accuracy=3,6,12\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 2,
+      "pattern": 2,
+      "accuracy": [
+        3,
+        6,
+        12
+      ],
+      "output": "SPP uniform_conf=2 pattern_conf=2 accuracy=3,6,12\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 4,
+      "pattern": 1,
+      "accuracy": [
+        3,
+        6,
+        12
+      ],
+      "output": "SPP uniform_conf=4 pattern_conf=1 accuracy=3,6,12\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 4,
+      "pattern": 2,
+      "accuracy": [
+        3,
+        6,
+        12
+      ],
+      "output": "SPP uniform_conf=4 pattern_conf=2 accuracy=3,6,12\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 2,
+      "pattern": 1,
+      "accuracy": [
+        1,
+        2,
+        4
+      ],
+      "output": "SPP uniform_conf=2 pattern_conf=1 accuracy=1,2,4\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 2,
+      "pattern": 2,
+      "accuracy": [
+        1,
+        2,
+        4
+      ],
+      "output": "SPP uniform_conf=2 pattern_conf=2 accuracy=1,2,4\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 4,
+      "pattern": 1,
+      "accuracy": [
+        1,
+        2,
+        4
+      ],
+      "output": "SPP uniform_conf=4 pattern_conf=1 accuracy=1,2,4\nDigest 5021615975489921661 attempts 0"
+    },
+    {
+      "uniform": 4,
+      "pattern": 2,
+      "accuracy": [
+        1,
+        2,
+        4
+      ],
+      "output": "SPP uniform_conf=4 pattern_conf=2 accuracy=1,2,4\nDigest 5021615975489921661 attempts 0"
+    }
+  ]
+}

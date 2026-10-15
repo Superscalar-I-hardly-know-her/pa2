@@ -1,0 +1,26 @@
+{
+  "spp": {
+    "ip_entry_bytes": 48,
+    "pattern_entry_bytes": 32,
+    "ip_table_bytes": 3072,
+    "pattern_table_bytes": 8192,
+    "controller_bytes": 8,
+    "configuration_bytes": 20,
+    "diagnostic_bytes": 16
+  },
+  "ip_stride": {
+    "ip_entry_bytes": 32,
+    "ip_table_bytes": 768
+  },
+  "logical_bits": {
+    "spp_ip_entry": 166,
+    "spp_pattern_entry": 102,
+    "spp_tables": 36736,
+    "spp_controller": 16,
+    "spp_configuration": 26,
+    "spp_diagnostics": 128,
+    "optional_private_accuracy_counters": 128,
+    "ip_stride_entry": 130,
+    "ip_stride_table": 3120
+  }
+}

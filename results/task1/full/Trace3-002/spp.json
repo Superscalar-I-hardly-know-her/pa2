@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/bin/hashed_perceptron-no-spp-no-no-no-no-no-lru-lru-lru-lru-lru-lru-lru-lru-1core-task1-spp",
+    "-warmup_instructions",
+    "25000000",
+    "-simulation_instructions",
+    "25000000",
+    "-traces",
+    "traces/Trace3-002.gz"
+  ],
+  "binary_sha256": "7eb190201069dae0e493bd10298cf821107779987d781f6b8914d5bccd7fc302",
+  "warmup": 25000000,
+  "measured": 25000000,
+  "defaults": {
+    "uniform_conf": 4,
+    "pattern_conf": 2,
+    "accuracy": [
+      25,
+      50,
+      75
+    ]
+  },
+  "seconds": 55.853288500000005,
+  "baseline": "results/task2/full/Trace3-002/lru.log",
+  "row": {
+    "trace": "Trace3-002",
+    "baseline_ipc": 0.3818477907112504,
+    "spp_ipc": 0.3825570781258646,
+    "speedup": 1.0018575134696812,
+    "baseline_l1d_load_mpki": 3.40356,
+    "spp_l1d_load_mpki": 3.348,
+    "prefetch_accuracy": 0.019292898905209736,
+    "issued": 76453,
+    "useful": 1475,
+    "coverage": 0.01632408419419673
+  }
+}

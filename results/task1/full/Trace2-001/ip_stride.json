@@ -1,0 +1,20 @@
+{
+  "signature": {
+    "binary_sha256": "f2d82d977cf968e04775305634ac6e2120aee74af76654919f425084fa963719",
+    "trace": "traces/Trace2-001.gz",
+    "trace_size": 5256405095,
+    "trace_mtime_ns": 1792054118708675781,
+    "warmup": 25000000,
+    "measured": 25000000
+  },
+  "command": [
+    "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/bin/hashed_perceptron-no-ip_stride-no-no-no-no-no-lru-lru-lru-lru-lru-lru-lru-lru-1core-task1-ip-stride",
+    "-warmup_instructions",
+    "25000000",
+    "-simulation_instructions",
+    "25000000",
+    "-traces",
+    "traces/Trace2-001.gz"
+  ],
+  "seconds": 86.837074459
+}

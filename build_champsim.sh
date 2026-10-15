@@ -24,6 +24,27 @@ if [ "$#" -lt 3 ]; then
     exit 1
 fi
 
+# Select once and pass explicitly to make: macOS g++ may actually be Clang.
+compiler="${CXX:-c++}"
+if [ "$#" -eq 19 ]; then
+    compiler="${19}"
+fi
+compiler_version=$("$compiler" --version) || exit 1
+echo "Compiler: $compiler"
+echo "$compiler_version"
+if [ "${CHAMPSIM_REQUIRE_GCC7:-0}" = 1 ]; then
+    if ! "$compiler" -x c++ -fsyntax-only - >/dev/null 2>&1 <<'CHECK_GCC7'
+#if defined(__clang__) || !defined(__GNUC__) || __GNUC__ != 7
+#error This build requires GNU GCC 7.
+#endif
+CHECK_GCC7
+    then
+        echo "ERROR: README requires GNU GCC/G++ 7; selected compiler does not match." >&2
+        echo "Select it with CXX=g++-7 on a system with GCC 7 installed." >&2
+        exit 1
+    fi
+fi
+
 # ChampSim configuration
 BRANCH="hashed_perceptron"           # branch/*.bpred
 L1I_PREFETCHER="no"   # prefetcher/*.l1i_pref
@@ -214,11 +235,7 @@ cp replacement/${STLB_REPLACEMENT}.stlb_repl replacement/stlb_replacement.cc
 mkdir -p bin
 rm -f bin/champsim
 make clean
-if [ "$#" -eq 19 ]; then
-    make CC=${19} CCX=${19}
-else
-    make
-fi
+make CC="$compiler" CXX="$compiler" || exit 1
 
 # Sanity check
 echo ""
@@ -251,6 +268,7 @@ BINARY_NAME="${BRANCH}-${L1I_PREFETCHER}-${L1D_PREFETCHER}-${L2C_PREFETCHER}-${L
 echo "Binary: bin/${BINARY_NAME}"
 echo ""
 mv bin/champsim bin/${BINARY_NAME}
+printf '%s\n%s\n' "$compiler" "$compiler_version" > "bin/${BINARY_NAME}.compiler.txt"
 
 
 # Restore to the default configuration
