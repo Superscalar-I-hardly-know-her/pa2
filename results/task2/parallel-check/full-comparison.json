@@ -1,0 +1,13 @@
+{
+  "mismatches": 0,
+  "fields": [
+    "instructions",
+    "cycles",
+    "ipc",
+    "l2_load_mpki",
+    "instruction_mpki",
+    "data_mpki"
+  ],
+  "sequential_seconds": 55.433,
+  "parallel_seconds": 56.086
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "trace": "Trace1-003.gz",
+    "matched": true,
+    "ipc": 0.335801,
+    "instructions": 100000,
+    "cycles": 297795,
+    "l2_load_mpki": 6.02,
+    "instruction_mpki": 0.05,
+    "data_mpki": 5.97
+  },
+  {
+    "trace": "Trace2-001.gz",
+    "matched": true,
+    "ipc": 0.12394,
+    "instructions": 100000,
+    "cycles": 806840,
+    "l2_load_mpki": 38.54,
+    "instruction_mpki": 28.37,
+    "data_mpki": 10.17
+  },
+  {
+    "trace": "Trace3-002.gz",
+    "matched": true,
+    "ipc": 0.333936,
+    "instructions": 100002,
+    "cycles": 299465,
+    "l2_load_mpki": 6.87986,
+    "instruction_mpki": 3.88992,
+    "data_mpki": 2.98994
+  }
+]

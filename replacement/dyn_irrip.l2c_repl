@@ -1,0 +1,146 @@
+#include "cache.h"
+#include <cmath>
+#include <cstdlib>
+#include <cstring>
+
+namespace {
+uint8_t rrpv[L2C_SET][L2C_WAY];
+const uint32_t window_size = 4096;
+uint32_t instruction_accesses, data_accesses, instruction_misses, data_misses;
+bool prioritize_instructions, start_in_irrip, persistent_switching;
+unsigned rrip_streak;
+double threshold;
+uint64_t windows, switches, roi_rrip_loads, roi_irrip_loads;
+
+bool flag(const char *name)
+{
+    const char *value = std::getenv(name);
+    if (!value) return false;
+    if (!std::strcmp(value, "0")) return false;
+    if (!std::strcmp(value, "1")) return true;
+    std::cerr << "Invalid " << name << ": " << value << endl;
+    std::exit(1);
+}
+
+// One RRIP leader in each 32-set group, with a different offset per group.
+bool leader(uint32_t set) { return (set & 31) == (set >> 5); }
+
+void observe(uint32_t cpu, bool instruction, bool hit)
+{
+    if (instruction) {
+        ++instruction_accesses;
+        if (!hit) ++instruction_misses;
+    } else {
+        ++data_accesses;
+        if (!hit) ++data_misses;
+    }
+    if (instruction_accesses + data_accesses != window_size) return;
+
+    uint32_t misses = instruction_misses + data_misses;
+    double share = misses ? double(instruction_misses) / misses : 0;
+    bool next_mode = share > threshold;
+    if (persistent_switching) {
+        next_mode = prioritize_instructions;
+        if (misses && share > threshold) {
+            next_mode = true;
+            rrip_streak = 0;
+        } else if (misses && share < threshold) {
+            if (rrip_streak < 2) ++rrip_streak;
+            if (rrip_streak == 2) next_mode = false;
+        } else {
+            // No misses or exact equality supplies no reason to change mode and
+            // breaks the sequence of consecutive below-threshold windows.
+            rrip_streak = 0;
+        }
+    }
+    bool changed = next_mode != prioritize_instructions;
+    ++windows;
+    switches += changed;
+    cout << "DYN_WINDOW index=" << windows << " phase=" << (warmup_complete[cpu] ? "roi" : "warmup")
+         << " i_access=" << instruction_accesses << " d_access=" << data_accesses
+         << " i_miss=" << instruction_misses << " d_miss=" << data_misses
+         << " share=" << share << " mode=" << (next_mode ? "IRRIP" : "RRIP")
+         << " switched=" << changed << " rrip_streak=" << rrip_streak << endl;
+    prioritize_instructions = next_mode;
+    instruction_accesses = data_accesses = instruction_misses = data_misses = 0;
+}
+}
+
+void CACHE::l2c_initialize_replacement()
+{
+    static_assert(L2C_SET == 1024, "Leader mapping assumes the assignment's 1024 L2 sets");
+    threshold = 0.25;
+    if (const char *value = std::getenv("DYN_IRRIP_THRESHOLD")) {
+        char *end;
+        threshold = std::strtod(value, &end);
+        if (end == value || *end || !std::isfinite(threshold) || threshold < 0 || threshold > 1) {
+            std::cerr << "Invalid DYN_IRRIP_THRESHOLD: " << value << endl;
+            std::exit(1);
+        }
+    }
+    for (unsigned set = 0; set < L2C_SET; ++set)
+        for (unsigned way = 0; way < L2C_WAY; ++way)
+            rrpv[set][way] = 3;
+    instruction_accesses = data_accesses = instruction_misses = data_misses = 0;
+    start_in_irrip = flag("DYN_IRRIP_START");
+    persistent_switching = flag("DYN_IRRIP_PERSIST");
+    prioritize_instructions = start_in_irrip;
+    rrip_streak = 0;
+    windows = switches = roi_rrip_loads = roi_irrip_loads = 0;
+    cout << "Dynamic I-RRIP threshold=" << threshold << " leaders=32 window=" << window_size
+         << " initial=" << (start_in_irrip ? "IRRIP" : "RRIP") << " persistent=" << persistent_switching
+         << " selected_insert=2 selected_data_hit=1 selected_bias=2" << endl;
+}
+
+uint32_t CACHE::l2c_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set,
+    const BLOCK *current_set, uint64_t ip, uint64_t full_addr, uint32_t type)
+{
+    for (unsigned way = 0; way < L2C_WAY; ++way)
+        if (!current_set[way].valid) return way;
+    bool aware = !leader(set) && prioritize_instructions;
+    while (true) {
+        int distant = -1, data = -1;
+        for (unsigned way = 0; way < L2C_WAY; ++way) {
+            if (rrpv[set][way] == 3 && distant < 0) distant = way;
+            if (!current_set[way].instruction && (data < 0 || rrpv[set][way] > rrpv[set][data]))
+                data = way;
+        }
+        if (distant >= 0) {
+            if (aware && data >= 0 && rrpv[set][data] >= 1) return data; // bias 2
+            return distant;
+        }
+        for (unsigned way = 0; way < L2C_WAY; ++way)
+            if (rrpv[set][way] < 3) ++rrpv[set][way];
+    }
+}
+
+void CACHE::l2c_update_replacement_state(uint32_t cpu, uint32_t set, uint32_t way,
+    uint64_t full_addr, uint64_t ip, uint64_t victim_addr, uint32_t type,
+    uint8_t hit, uint8_t isInstruction)
+{
+    bool is_leader = leader(set);
+    bool aware = !is_leader && prioritize_instructions;
+    bool instruction = hit ? block[set][way].instruction :
+        (isInstruction && (type == LOAD || type == PREFETCH));
+    // Both policies insert at 2. Only data promotion and eviction change modes.
+    rrpv[set][way] = hit ? (aware && !instruction ? 1 : 0) : 2;
+
+    if (type != LOAD) return; // Translation, prefetch, RFO and writeback do not train the controller.
+    if (is_leader) {
+        // Replacement callbacks observe demand hits and completed miss fills, matching
+        // the simulator's load statistics. MSHR-merged requests share one fill observation.
+        // Update the controller last, so a new mode applies to subsequent operations.
+        observe(cpu, isInstruction, hit);
+    } else if (warmup_complete[cpu]) {
+        if (aware) ++roi_irrip_loads;
+        else ++roi_rrip_loads;
+    }
+}
+
+void CACHE::l2c_replacement_final_stats()
+{
+    cout << "DYN_SUMMARY windows=" << windows << " switches=" << switches
+         << " roi_rrip_loads=" << roi_rrip_loads << " roi_irrip_loads=" << roi_irrip_loads
+         << " pending_i_access=" << instruction_accesses << " pending_d_access=" << data_accesses
+         << " pending_i_miss=" << instruction_misses << " pending_d_miss=" << data_misses << endl;
+}

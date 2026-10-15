@@ -1,0 +1,27 @@
+{
+  "signature": {
+    "config": {
+      "name": "lru",
+      "policy": "lru"
+    },
+    "binary_sha256": "2e91cdb228a2a417babb617c1b27fc5796f1b6ffd697351d98c47af2e8c1b0bc",
+    "trace": "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/traces/Trace2-001",
+    "size": 5256405095,
+    "mtime_ns": 1792054118708675781,
+    "warmup": 25000000,
+    "measured": 25000000
+  },
+  "row": {
+    "trace": "Trace2-001",
+    "name": "lru",
+    "policy": "lru",
+    "status": "ok",
+    "ipc": 0.251534,
+    "instructions": 25000001,
+    "cycles": 99390111,
+    "l2_load_mpki": 27.3732,
+    "instruction_mpki": 18.8087,
+    "data_mpki": 8.56452,
+    "seconds": 60.176
+  }
+}

@@ -1,0 +1,38 @@
+Running Trace1-003 threshold=0.10
+Running Trace1-003 threshold=0.25
+Running Trace1-003 threshold=0.75
+Running Trace1-003 threshold=0.50
+Running Trace1-003 threshold=0.90
+Running Trace1-003 threshold=1.00
+Completed 1/18: Trace1-003 0.10 ok
+Completed 2/18: Trace1-003 0.75 ok
+Running Trace2-001 threshold=0.10
+Completed 3/18: Trace1-003 0.25 ok
+Running Trace2-001 threshold=0.25
+Completed 4/18: Trace1-003 0.50 ok
+Running Trace2-001 threshold=0.50
+Completed 5/18: Trace2-001 0.10 ok
+Running Trace2-001 threshold=0.75
+Completed 6/18: Trace2-001 0.25 ok
+Running Trace2-001 threshold=0.90
+Running Trace2-001 threshold=1.00
+Completed 7/18: Trace1-003 0.90 ok
+Completed 8/18: Trace1-003 1.00 ok
+Running Trace3-002 threshold=0.10
+Completed 9/18: Trace2-001 0.50 ok
+Running Trace3-002 threshold=0.25
+Completed 10/18: Trace2-001 0.75 ok
+Running Trace3-002 threshold=0.50
+Completed 11/18: Trace2-001 1.00 ok
+Running Trace3-002 threshold=0.75
+Completed 12/18: Trace2-001 0.90 ok
+Running Trace3-002 threshold=0.90
+Completed 13/18: Trace3-002 0.10 ok
+Running Trace3-002 threshold=1.00
+Completed 14/18: Trace3-002 0.25 ok
+Completed 15/18: Trace3-002 0.50 ok
+Completed 16/18: Trace3-002 0.75 ok
+Completed 17/18: Trace3-002 0.90 ok
+Completed 18/18: Trace3-002 1.00 ok
+Forced-RRIP runs exactly match standalone SRRIP on all three traces.
+Finished: /Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/results/task2b/smoke/results.csv

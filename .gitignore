@@ -1,0 +1,17 @@
+# Benchmark traces and downloaded trace archives must stay local.
+traces/
+*.champsimtrace*
+*.xz
+*.gz
+*.zip
+*.bz2
+*.zst
+
+# Local build outputs.
+obj/
+bin/
+__pycache__/
+.venv/
+.cache/
+
+.DS_Store

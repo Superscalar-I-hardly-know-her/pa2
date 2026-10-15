@@ -1,0 +1,334 @@
+Building single-core ChampSim...
+
+rm -f -r obj
+Generating dependencies for src/main.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling src/main.cc...
+src/main.cc:159:63: warning: variable 'TOTAL_INSTR_MISS' set but not used [-Wunused-but-set-variable]
+  159 |     uint64_t TOTAL_ACCESS = 0, TOTAL_HIT = 0, TOTAL_MISS = 0, TOTAL_INSTR_MISS = 0;
+      |                                                               ^
+src/main.cc:688:9: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+  688 |     int i, m = n, c = -1;
+      |         ^
+src/main.cc:1095:13: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1095 |             sprintf(ooo_cpu[count_traces].trace_string, "%s", argv[i]);
+      |             ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+src/main.cc:1108:17: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1108 |                 sprintf(ooo_cpu[count_traces].gunzip_command, "gunzip -c %s", argv[i]);
+      |                 ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+src/main.cc:1110:17: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1110 |                 sprintf(ooo_cpu[count_traces].gunzip_command, "xz -dc %s", argv[i]);
+      |                 ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+src/main.cc:1164:2: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1164 |         sprintf(context_switch_string, "%s", argv[argc-1]);
+      |         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+src/main.cc:1183:73: warning: format specifies type 'int *' but the argument has type 'uint8_t *' (aka 'unsigned char *') [-Wformat]
+ 1183 |         while((fscanf(context_switch_file, "%ld %d %d", &cs_file[index].cycle, &cs_file[index].swap_cpu[0], &cs_file[index].swap_cpu[1]))!=EOF)
+      |                                                 ~~                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                 %s
+src/main.cc:1183:102: warning: format specifies type 'int *' but the argument has type 'uint8_t *' (aka 'unsigned char *') [-Wformat]
+ 1183 |         while((fscanf(context_switch_file, "%ld %d %d", &cs_file[index].cycle, &cs_file[index].swap_cpu[0], &cs_file[index].swap_cpu[1]))!=EOF)
+      |                                                    ~~                                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                    %s
+8 warnings generated.
+Generating dependencies for src/uncore.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling src/uncore.cc...
+Generating dependencies for src/block.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling src/block.cc...
+Generating dependencies for src/page_table_walker.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling src/page_table_walker.cc...
+src/page_table_walker.cc:106:123: warning: use of logical '&&' with constant operand [-Wconstant-logical-operand]
+  106 |                 MSHR.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (MSHR.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1)); //Return the translated physical address to STLB
+      |                                                                                                                           ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+src/page_table_walker.cc:106:123: note: use '&' for a bitwise operation
+  106 |                 MSHR.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (MSHR.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1)); //Return the translated physical address to STLB
+      |                                                                                                                           ^~
+      |                                                                                                                           &
+src/page_table_walker.cc:106:123: note: remove constant to silence this warning
+  106 |                 MSHR.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (MSHR.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1)); //Return the translated physical address to STLB
+      |                                                                                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/page_table_walker.cc:244:123: warning: use of logical '&&' with constant operand [-Wconstant-logical-operand]
+  244 |                     RQ.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (RQ.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1));
+      |                                                                                                                           ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+src/page_table_walker.cc:244:123: note: use '&' for a bitwise operation
+  244 |                     RQ.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (RQ.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1));
+      |                                                                                                                           ^~
+      |                                                                                                                           &
+src/page_table_walker.cc:244:123: note: remove constant to silence this warning
+  244 |                     RQ.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (RQ.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1));
+      |                                                                                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/page_table_walker.cc:353:123: warning: use of logical '&&' with constant operand [-Wconstant-logical-operand]
+  353 |                     PQ.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (RQ.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1));
+      |                                                                                                                           ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+src/page_table_walker.cc:353:123: note: use '&' for a bitwise operation
+  353 |                     PQ.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (RQ.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1));
+      |                                                                                                                           ^~
+      |                                                                                                                           &
+src/page_table_walker.cc:353:123: note: remove constant to silence this warning
+  353 |                     PQ.entry[index].data = next_level_base_addr << LOG2_PAGE_SIZE | (RQ.entry[index].full_virtual_address && ((1<<LOG2_PAGE_SIZE) - 1));
+      |                                                                                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/page_table_walker.cc:425:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+  425 | }
+      | ^
+4 warnings generated.
+Generating dependencies for src/ooo_cpu.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling src/ooo_cpu.cc...
+src/ooo_cpu.cc:508:25: warning: '/*' within block comment [-Wcomment]
+  508 |                         /*
+      |                         ^
+src/ooo_cpu.cc:729:42: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+  729 |                 if((IFETCH_BUFFER.entry[index].fetched == 0))
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+src/ooo_cpu.cc:729:42: note: remove extraneous parentheses around the comparison to silence this warning
+  729 |                 if((IFETCH_BUFFER.entry[index].fetched == 0))
+      |                    ~                                   ^   ~
+src/ooo_cpu.cc:729:42: note: use '=' to turn this equality comparison into an assignment
+  729 |                 if((IFETCH_BUFFER.entry[index].fetched == 0))
+      |                                                        ^~
+      |                                                        =
+src/ooo_cpu.cc:895:40: warning: '/*' within block comment [-Wcomment]
+  895 |         ////DP ( if (warmup_complete[cpu]) {    //*******************************************************************************************
+      |                                                  ^
+src/ooo_cpu.cc:927:9: warning: '/*' within block comment [-Wcomment]
+  927 |         /*fetch_packet.address = ROB.entry[fetch_index].instruction_pa >> 6;
+      |         ^
+src/ooo_cpu.cc:949:13: warning: '/*' within block comment [-Wcomment]
+  949 |             /*
+      |             ^
+src/ooo_cpu.cc:2603:55: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2603 |         ITERATE_SET(merged, provider->sq_index_depend_on_me, SQ.SIZE) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/ooo_cpu.cc:2603:55: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+src/ooo_cpu.cc:2620:55: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2620 |         ITERATE_SET(merged, provider->lq_index_depend_on_me, LQ.SIZE) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/ooo_cpu.cc:2620:55: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+src/ooo_cpu.cc:2644:58: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2644 |     ITERATE_SET(merged, provider->lq_index_depend_on_me, LQ.SIZE) {
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/ooo_cpu.cc:2644:58: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+8 warnings generated.
+Generating dependencies for src/cache.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling src/cache.cc...
+src/cache.cc:224:125: warning: result of comparison of constant -1 with expression of type 'uint8_t' (aka 'unsigned char') is always true [-Wtautological-constant-out-of-range-compare]
+  224 |                     if(cache_type == IS_STLB && MSHR.entry[mshr_index].l1_pq_index != -1 && MSHR.entry[mshr_index].fill_l1d != -1) //@Vishal: Prefetech request from L1D prefetcher
+      |                                                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~
+src/cache.cc:237:139: warning: result of comparison of constant -1 with expression of type 'uint8_t' (aka 'unsigned char') is always true [-Wtautological-constant-out-of-range-compare]
+  237 |                     else if(cache_type == IS_STLB && MSHR.entry[mshr_index].prefetch_translation_merged && MSHR.entry[mshr_index].fill_l1d!= -1)//@Vishal: Prefetech request from L1D prefetcher
+      |                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^  ~~
+src/cache.cc:249:186: warning: result of comparison of constant -1 with expression of type 'uint8_t' (aka 'unsigned char') is always true [-Wtautological-constant-out-of-range-compare]
+  249 |                     else if(cache_type == IS_ITLB && (MSHR.entry[mshr_index].l1_pq_index != -1 || MSHR.entry[mshr_index].prefetch_translation_merged) && MSHR.entry[mshr_index].fill_l1i != -1)
+      |                                                                                                                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~
+src/cache.cc:1160:87: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1160 |                         ITERATE_SET(merged, RQ.entry[rq_index].lq_index_depend_on_me, ooo_cpu[cpu].LQ.SIZE) 
+      |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/cache.cc:1160:95: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 1160 |                         ITERATE_SET(merged, RQ.entry[rq_index].lq_index_depend_on_me, ooo_cpu[cpu].LQ.SIZE) 
+      |                                                                                               ^
+src/cache.cc:1248:97: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1248 |                 ITERATE_SET(other_rq_index,tlb.PROCESSED.entry[index].l1_rq_index_depend_on_me, RQ.SIZE)
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/cache.cc:1248:97: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+src/cache.cc:1260:97: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1260 |                             ITERATE_SET(merged, RQ.entry[other_rq_index].lq_index_depend_on_me, ooo_cpu[cpu].LQ.SIZE)
+      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/cache.cc:1260:105: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 1260 |                             ITERATE_SET(merged, RQ.entry[other_rq_index].lq_index_depend_on_me, ooo_cpu[cpu].LQ.SIZE)
+      |                                                                                                         ^
+src/cache.cc:1285:97: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1285 |                 ITERATE_SET(other_wq_index,tlb.PROCESSED.entry[index].l1_wq_index_depend_on_me, WQ.SIZE) 
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/cache.cc:1285:97: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+src/cache.cc:1315:97: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1315 |                 ITERATE_SET(other_pq_index,tlb.PROCESSED.entry[index].l1_pq_index_depend_on_me, PQ.SIZE)
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/cache.cc:1315:97: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+src/cache.cc:1393:102: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1393 |                     ITERATE_SET(other_pq_index, tlb.PROCESSED.entry[index].l1_pq_index_depend_on_me, PQ.SIZE) 
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+inc/set.h:254:18: note: expanded from macro 'ITERATE_SET'
+  254 |         TYPE expand_##i[n+1]; \
+      |                         ^~~
+src/cache.cc:1393:102: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+src/cache.cc:1753:29: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 1753 |                             else
+      |                             ^
+src/cache.cc:1749:34: warning: variable 'l2c_mpki' set but not used [-Wunused-but-set-variable]
+ 1749 |                         uint32_t l2c_mpki; // = (ooo_cpu[fill_cpu].L2C.sim_access[fill_cpu][0]*1000)/(ooo_cpu[fill_cpu].num_retired);
+      |                                  ^
+src/cache.cc:2381:41: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2381 |                                         else
+      |                                         ^
+src/cache.cc:2377:46: warning: variable 'l2c_mpki' set but not used [-Wunused-but-set-variable]
+ 2377 |                                     uint32_t l2c_mpki; // = (ooo_cpu[fill_cpu].L2C.sim_access[fill_cpu][0]*1000)/(ooo_cpu[fill_cpu].num_retired);
+      |                                              ^
+src/cache.cc:2190:37: warning: variable 'prior_data' is used uninitialized whenever '?:' condition is false [-Wsometimes-uninitialized]
+ 2190 |                                     assert(MSHR.entry[mshr_index].type != TRANSLATION_FROM_L1D || MSHR.entry[mshr_index].type != PREFETCH_TRANSLATION);   
+      |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h:72:6: note: expanded from macro 'assert'
+   72 |     (__builtin_expect(!(e), 0) ? __assert_rtn(__func__, __ASSERT_FILE_NAME, __LINE__, #e) : (void)0)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+src/cache.cc:2246:63: note: uninitialized use occurs here
+ 2246 |                                 MSHR.entry[mshr_index].data = prior_data;
+      |                                                               ^~~~~~~~~~
+src/cache.cc:2190:37: note: remove the '?:' if its condition is always true
+ 2190 |                                     assert(MSHR.entry[mshr_index].type != TRANSLATION_FROM_L1D || MSHR.entry[mshr_index].type != PREFETCH_TRANSLATION);   
+      |                                     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h:72:6: note: expanded from macro 'assert'
+   72 |     (__builtin_expect(!(e), 0) ? __assert_rtn(__func__, __ASSERT_FILE_NAME, __LINE__, #e) : (void)0)
+      |      ^
+src/cache.cc:2114:52: note: initialize the variable 'prior_data' to silence this warning
+ 2114 |                                 uint64_t prior_data;
+      |                                                    ^
+      |                                                     = 0
+14 warnings generated.
+Generating dependencies for src/dram_controller.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling src/dram_controller.cc...
+src/dram_controller.cc:11:57: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   11 | uint64_t last_bank_busy_ccc[DRAM_CHANNELS][NUM_CPUS] = {0}, last_bank_busy_cpu[DRAM_CHANNELS] = {0}, sum_cycles_read[DRAM_CHANNELS] = {0}, sum_cycles_write[DRAM_CHANNELS] = {0};
+      |                                                         ^
+      |                                                         {}
+src/dram_controller.cc:13:77: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   13 | uint64_t banks_busy_read_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0}, banks_busy_write_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0};
+      |                                                                             ^
+      |                                                                             {}
+src/dram_controller.cc:13:77: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   13 | uint64_t banks_busy_read_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0}, banks_busy_write_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0};
+      |                                                                             ^
+      |                                                                             {}
+src/dram_controller.cc:13:149: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   13 | uint64_t banks_busy_read_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0}, banks_busy_write_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0};
+      |                                                                                                                                                     ^
+      |                                                                                                                                                     {}
+src/dram_controller.cc:13:149: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   13 | uint64_t banks_busy_read_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0}, banks_busy_write_cycles[DRAM_CHANNELS][DRAM_RANKS][DRAM_BANKS+1] = {0};
+      |                                                                                                                                                     ^
+      |                                                                                                                                                     {}
+5 warnings generated.
+Generating dependencies for branch/branch_predictor.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling branch/branch_predictor.cc...
+Generating dependencies for replacement/l2c_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/l2c_replacement.cc...
+Generating dependencies for replacement/btb_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/btb_replacement.cc...
+Generating dependencies for replacement/base_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/base_replacement.cc...
+Generating dependencies for replacement/itlb_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/itlb_replacement.cc...
+Generating dependencies for replacement/stlb_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/stlb_replacement.cc...
+Generating dependencies for replacement/dtlb_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/dtlb_replacement.cc...
+Generating dependencies for replacement/llc_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/llc_replacement.cc...
+Generating dependencies for replacement/l1d_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/l1d_replacement.cc...
+Generating dependencies for replacement/l1i_replacement.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling replacement/l1i_replacement.cc...
+Generating dependencies for prefetcher/l1i_prefetcher.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling prefetcher/l1i_prefetcher.cc...
+Generating dependencies for prefetcher/l2c_prefetcher.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling prefetcher/l2c_prefetcher.cc...
+Generating dependencies for prefetcher/dtlb_prefetcher.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling prefetcher/dtlb_prefetcher.cc...
+Generating dependencies for prefetcher/l1d_prefetcher.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling prefetcher/l1d_prefetcher.cc...
+Generating dependencies for prefetcher/stlb_prefetcher.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling prefetcher/stlb_prefetcher.cc...
+Generating dependencies for prefetcher/llc_prefetcher.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling prefetcher/llc_prefetcher.cc...
+Generating dependencies for prefetcher/itlb_prefetcher.cc...
+clang++: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+Compiling prefetcher/itlb_prefetcher.cc...
+Linking bin/champsim...
+
+[1mChampSim is successfully built
+Branch Predictor: hashed_perceptron
+L1I Prefetcher: no
+L1D Prefetcher: no
+L2C Prefetcher: no
+LLC Prefetcher: no
+ITLB Prefetcher: no
+DTLB Prefetcher: no
+STLB Prefetcher: no
+BTB Replacement: lru
+L1I Replacement: lru
+L1D Replacement: lru
+L2C Replacement: irrip
+LLC Replacement: lru
+ITLB Replacement: lru
+DTLB Replacement: lru
+STLB Replacement: lru
+Cores: 1
+Binary: bin/hashed_perceptron-no-no-no-no-no-no-no-lru-lru-lru-irrip-lru-lru-lru-lru-1core-task2-irrip
+

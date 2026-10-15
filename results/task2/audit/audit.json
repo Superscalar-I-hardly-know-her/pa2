@@ -1,0 +1,19 @@
+{
+  "configurations_per_trace": 30,
+  "trace_count": 3,
+  "warmup_instructions": 250000,
+  "measured_instructions": 250000,
+  "mismatches": 0,
+  "counts": {
+    "events": 2826586,
+    "fills": 1048740,
+    "hits": 729106,
+    "evictions": 475620,
+    "aged": 132802,
+    "instruction_victims": 156362,
+    "data_victims": 319258,
+    "protected_instruction": 208959
+  },
+  "policy_sha256": "041d3361c8edd8ad4ff849e3d6d5f63cf448bfa3e3580a4695c721156aaacfe7",
+  "instrumented_binary_sha256": "e79a7be25035df71061a792b0d68f95c6e3e7f92fa11b1d6687f4b9aad4e0a6d"
+}

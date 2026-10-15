@@ -1,0 +1,8 @@
+{
+  "threshold": 0.1,
+  "leader_sets": 32,
+  "window": 4096,
+  "static_policy": "i2-h1-a1-b2",
+  "geometric_mean_speedup": 1.0180196449377241,
+  "default_threshold": 0.25
+}

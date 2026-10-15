@@ -1,0 +1,31 @@
+[
+  {
+    "variant": "original",
+    "threshold": 0.1,
+    "tied_thresholds": [
+      0.1
+    ],
+    "speedup_vs_lru": 1.018020408796855,
+    "speedup_vs_static": 0.9995874848318279
+  },
+  {
+    "variant": "start-irrip",
+    "threshold": 0.1,
+    "tied_thresholds": [
+      0.1
+    ],
+    "speedup_vs_lru": 1.017787106069998,
+    "speedup_vs_static": 0.9993584064322906
+  },
+  {
+    "variant": "persistent",
+    "threshold": 0.1,
+    "tied_thresholds": [
+      0.1,
+      0.25,
+      0.5
+    ],
+    "speedup_vs_lru": 1.0177109333000784,
+    "speedup_vs_static": 0.9992836128949131
+  }
+]

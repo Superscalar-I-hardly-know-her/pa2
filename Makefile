@@ -10,6 +10,9 @@ debug = 1
 
 CFlags = -Wall -g -std=c++11 -O3
 LDFlags = -static
+ifeq ($(shell uname -s),Darwin)
+LDFlags =
+endif
 libs =
 libDir =
 

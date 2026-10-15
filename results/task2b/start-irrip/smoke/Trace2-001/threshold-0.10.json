@@ -1,0 +1,28 @@
+{
+  "signature": {
+    "binary_sha256": "b775983ce1270e793d9766a8d5181b5cbfdb8e1f71713fba5e8b687b376ccd7d",
+    "threshold": 0.1,
+    "warmup": 1000000,
+    "measured": 1000000,
+    "trace": "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/traces/Trace2-001",
+    "size": 5256405095,
+    "mtime_ns": 1792054118708675781,
+    "variant": "start-irrip"
+  },
+  "row": {
+    "trace": "Trace2-001",
+    "threshold": 0.1,
+    "variant": "start-irrip",
+    "status": "ok",
+    "ipc": 0.425898,
+    "instructions": 1000001,
+    "cycles": 2347985,
+    "l2_load_mpki": 4.593,
+    "instruction_mpki": 1.067,
+    "data_mpki": 3.526,
+    "windows": 0,
+    "switches": 0,
+    "roi_irrip_fraction": 1.0,
+    "seconds": 2.152
+  }
+}

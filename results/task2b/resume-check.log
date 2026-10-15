@@ -1,0 +1,31 @@
+cached Trace1-003 0.25
+cached Trace1-003 0.10
+cached Trace1-003 0.75
+cached Trace1-003 0.50
+Completed 1/15: Trace1-003 0.25 ok
+cached Trace2-001 0.10
+cached Trace1-003 0.90
+cached Trace2-001 0.25
+cached Trace2-001 0.50
+cached Trace2-001 0.75
+Completed 2/15: Trace1-003 0.10 ok
+cached Trace2-001 0.90
+cached Trace3-002 0.10
+cached Trace3-002 0.25
+cached Trace3-002 0.50
+cached Trace3-002 0.75
+Completed 3/15: Trace1-003 0.75 ok
+cached Trace3-002 0.90
+Completed 4/15: Trace1-003 0.50 ok
+Completed 5/15: Trace2-001 0.10 ok
+Completed 6/15: Trace1-003 0.90 ok
+Completed 7/15: Trace2-001 0.25 ok
+Completed 8/15: Trace2-001 0.50 ok
+Completed 9/15: Trace2-001 0.75 ok
+Completed 10/15: Trace2-001 0.90 ok
+Completed 11/15: Trace3-002 0.10 ok
+Completed 12/15: Trace3-002 0.25 ok
+Completed 13/15: Trace3-002 0.50 ok
+Completed 14/15: Trace3-002 0.75 ok
+Completed 15/15: Trace3-002 0.90 ok
+Finished: /Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/results/task2b/full/results.csv

@@ -1,0 +1,112 @@
+#include "cache.h"
+#include <cstdlib>
+
+#define maxRRPV 3
+
+// Two logical RRPV bits per line. BLOCK::instruction supplies the type bit.
+uint8_t rrpv[L2C_SET][L2C_WAY];
+int instruction_insert, data_hit, eviction_bias, instruction_aware;
+
+int parameter(const char *name, int fallback, int maximum)
+{
+    const char *value = std::getenv(name);
+    if (!value)
+        return fallback;
+
+    char *end;
+    long result = std::strtol(value, &end, 10);
+    if (end == value || *end || result < 0 || result > maximum) {
+        std::cerr << "Invalid " << name << ": " << value << std::endl;
+        std::exit(1);
+    }
+    return static_cast<int>(result);
+}
+
+void CACHE::l2c_initialize_replacement()
+{
+    instruction_insert = parameter("IRRIP_INSERT", 2, 2);
+    data_hit = parameter("IRRIP_DATA_HIT", 1, 1);
+    eviction_bias = parameter("IRRIP_BIAS", 2, 3);
+    instruction_aware = parameter("IRRIP_AWARE", 1, 1);
+
+    for (int i=0; i<L2C_SET; i++) {
+        for (int j=0; j<L2C_WAY; j++)
+            rrpv[i][j] = maxRRPV;
+    }
+
+    cout << "I-RRIP insert=" << instruction_insert << " data_hit=" << data_hit
+         << " aware=" << instruction_aware << " bias=" << eviction_bias << endl;
+}
+
+// find replacement victim
+uint32_t CACHE::l2c_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, const BLOCK *current_set, uint64_t ip, uint64_t full_addr, uint32_t type)
+{
+    // an invalid line is always the victim
+    for (int i=0; i<L2C_WAY; i++) {
+        if (!current_set[i].valid)
+            return i;
+    }
+
+    while (1)
+    {
+        int first_distant = -1;
+        int data = -1;
+
+        for (int i=0; i<L2C_WAY; i++) {
+            if (rrpv[set][i] == maxRRPV && first_distant < 0)
+                first_distant = i;
+
+            // among data lines, keep the one closest to eviction; ties keep the earlier way
+            if (!current_set[i].instruction && (data < 0 || rrpv[set][i] > rrpv[set][data]))
+                data = i;
+        }
+
+        if (first_distant >= 0) {
+            // Bias 0 only breaks RRPV-3 ties. Bias 3 always chooses data if present.
+            if (instruction_aware && data >= 0 && rrpv[set][data] >= maxRRPV - eviction_bias)
+                return data;
+
+            return first_distant;
+        }
+
+        // only age when no distant candidate exists; values never exceed maxRRPV
+        for (int i=0; i<L2C_WAY; i++) {
+            if (rrpv[set][i] < maxRRPV)
+                rrpv[set][i]++;
+        }
+    }
+
+    // WE SHOULD NOT REACH HERE
+    assert(0);
+    return 0;
+}
+
+// called on every cache hit and cache fill
+void CACHE::l2c_update_replacement_state(uint32_t cpu, uint32_t set, uint32_t way, uint64_t full_addr, uint64_t ip, uint64_t victim_addr, uint32_t type, uint8_t hit, uint8_t isInstruction)
+{
+    // On fills the block still describes the victim, so classify the incoming packet.
+    // On hits the resident type is sticky, including lines used as both code and data.
+    bool instruction;
+    if (hit)
+        instruction = block[set][way].instruction;
+    else
+        instruction = isInstruction && (type == LOAD || type == PREFETCH);
+
+    if (hit) {
+        if (instruction)
+            rrpv[set][way] = 0;
+        else
+            rrpv[set][way] = data_hit;
+    }
+    else {
+        if (instruction)
+            rrpv[set][way] = instruction_insert;
+        else
+            rrpv[set][way] = maxRRPV-1;
+    }
+}
+
+void CACHE::l2c_replacement_final_stats()
+{
+
+}

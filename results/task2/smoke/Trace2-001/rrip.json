@@ -1,0 +1,27 @@
+{
+  "signature": {
+    "config": {
+      "name": "rrip",
+      "policy": "rrip"
+    },
+    "binary_sha256": "f1e936f7aa6aca8e1b5c72d69d041e6864d606c7bb012d29df40ee0bb062db57",
+    "trace": "/Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/traces/Trace2-001",
+    "size": 5256405095,
+    "mtime_ns": 1792054118708675781,
+    "warmup": 10000,
+    "measured": 10000
+  },
+  "row": {
+    "trace": "Trace2-001",
+    "name": "rrip",
+    "policy": "rrip",
+    "status": "ok",
+    "ipc": 0.0677143,
+    "instructions": 10001,
+    "cycles": 147694,
+    "l2_load_mpki": 77.2923,
+    "instruction_mpki": 50.8949,
+    "data_mpki": 26.3974,
+    "seconds": 0.04
+  }
+}

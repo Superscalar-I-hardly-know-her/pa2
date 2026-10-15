@@ -1,0 +1,31 @@
+Running Trace1-003 threshold=0.50
+Running Trace1-003 threshold=0.10
+Running Trace1-003 threshold=0.75
+Running Trace1-003 threshold=0.25
+Running Trace1-003 threshold=0.90
+Completed 1/15: Trace1-003 0.50 ok
+Running Trace2-001 threshold=0.10
+Completed 2/15: Trace1-003 0.10 ok
+Running Trace2-001 threshold=0.25
+Completed 3/15: Trace1-003 0.75 ok
+Running Trace2-001 threshold=0.50
+Completed 4/15: Trace1-003 0.25 ok
+Running Trace2-001 threshold=0.75
+Running Trace2-001 threshold=0.90
+Completed 5/15: Trace2-001 0.10 ok
+Completed 6/15: Trace2-001 0.25 ok
+Running Trace3-002 threshold=0.10
+Completed 7/15: Trace2-001 0.50 ok
+Running Trace3-002 threshold=0.25
+Completed 8/15: Trace1-003 0.90 ok
+Running Trace3-002 threshold=0.50
+Running Trace3-002 threshold=0.75
+Completed 9/15: Trace2-001 0.75 ok
+Completed 10/15: Trace2-001 0.90 ok
+Running Trace3-002 threshold=0.90
+Completed 11/15: Trace3-002 0.10 ok
+Completed 12/15: Trace3-002 0.25 ok
+Completed 13/15: Trace3-002 0.75 ok
+Completed 14/15: Trace3-002 0.50 ok
+Completed 15/15: Trace3-002 0.90 ok
+Finished: /Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/results/task2b/persistent/smoke/results.csv

@@ -1,0 +1,12 @@
+{
+  "runs": 96,
+  "mismatches": 0,
+  "fields": [
+    "ipc",
+    "instructions",
+    "cycles",
+    "l2_load_mpki",
+    "instruction_mpki",
+    "data_mpki"
+  ]
+}

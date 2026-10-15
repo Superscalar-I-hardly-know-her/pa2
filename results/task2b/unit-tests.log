@@ -1,0 +1,9 @@
+Dynamic I-RRIP threshold=0.25 leaders=32 window=4096 selected_insert=2 selected_data_hit=1 selected_bias=2
+DYN_WINDOW index=1 phase=warmup i_access=1 d_access=4095 i_miss=1 d_miss=3 share=0.25 mode=RRIP switched=0
+DYN_WINDOW index=2 phase=warmup i_access=2 d_access=4094 i_miss=2 d_miss=2 share=0.5 mode=IRRIP switched=1
+DYN_WINDOW index=3 phase=warmup i_access=0 d_access=4096 i_miss=0 d_miss=100 share=0 mode=RRIP switched=1
+DYN_WINDOW index=4 phase=roi i_access=100 d_access=3996 i_miss=100 d_miss=0 share=1 mode=IRRIP switched=1
+DYN_WINDOW index=5 phase=roi i_access=0 d_access=4096 i_miss=0 d_miss=0 share=0 mode=RRIP switched=1
+DYN_WINDOW index=6 phase=roi i_access=4096 d_access=0 i_miss=4096 d_miss=0 share=1 mode=RRIP switched=0
+DYN_WINDOW index=7 phase=roi i_access=1 d_access=4095 i_miss=1 d_miss=0 share=1 mode=IRRIP switched=1
+Dynamic I-RRIP tests passed

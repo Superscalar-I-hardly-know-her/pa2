@@ -1,0 +1,95 @@
+Using 4 simulation workers
+[1/93] Trace1-003 lru
+[2/93] cached Trace1-003 i0-h0-a0-b0
+[4/93] cached Trace1-003 i0-h0-a1-b1
+[3/93] cached Trace1-003 i0-h0-a1-b0
+[6/93] cached Trace1-003 i0-h0-a1-b3
+[5/93] cached Trace1-003 i0-h0-a1-b2
+[7/93] cached Trace1-003 i0-h1-a0-b0
+[8/93] cached Trace1-003 i0-h1-a1-b0
+[9/93] cached Trace1-003 i0-h1-a1-b1
+[10/93] cached Trace1-003 i0-h1-a1-b2
+[11/93] cached Trace1-003 i0-h1-a1-b3
+[12/93] cached Trace1-003 i1-h0-a0-b0
+[13/93] cached Trace1-003 i1-h0-a1-b0
+[15/93] Trace1-003 i1-h0-a1-b2
+[14/93] cached Trace1-003 i1-h0-a1-b1
+[16/93] Trace1-003 i1-h0-a1-b3
+[17/93] Trace1-003 i1-h1-a0-b0
+[18/93] Trace1-003 i1-h1-a1-b0
+[19/93] Trace1-003 i1-h1-a1-b1
+[20/93] Trace1-003 i1-h1-a1-b2
+[21/93] Trace1-003 i1-h1-a1-b3
+[22/93] Trace1-003 i2-h0-a0-b0
+[23/93] Trace1-003 i2-h0-a1-b0
+[24/93] Trace1-003 i2-h0-a1-b1
+[25/93] Trace1-003 i2-h0-a1-b2
+[26/93] Trace1-003 i2-h0-a1-b3
+[27/93] Trace1-003 i2-h1-a0-b0
+[28/93] Trace1-003 i2-h1-a1-b0
+[29/93] Trace1-003 i2-h1-a1-b1
+[30/93] Trace1-003 i2-h1-a1-b2
+[31/93] Trace1-003 i2-h1-a1-b3
+[32/93] Trace2-001 lru
+[33/93] Trace2-001 i0-h0-a0-b0
+[34/93] Trace2-001 i0-h0-a1-b0
+[35/93] Trace2-001 i0-h0-a1-b1
+[36/93] Trace2-001 i0-h0-a1-b2
+[37/93] Trace2-001 i0-h0-a1-b3
+[38/93] Trace2-001 i0-h1-a0-b0
+[39/93] Trace2-001 i0-h1-a1-b0
+[40/93] Trace2-001 i0-h1-a1-b1
+[41/93] Trace2-001 i0-h1-a1-b2
+[42/93] Trace2-001 i0-h1-a1-b3
+[43/93] Trace2-001 i1-h0-a0-b0
+[44/93] Trace2-001 i1-h0-a1-b0
+[45/93] Trace2-001 i1-h0-a1-b1
+[46/93] Trace2-001 i1-h0-a1-b2
+[47/93] Trace2-001 i1-h0-a1-b3
+[48/93] Trace2-001 i1-h1-a0-b0
+[49/93] Trace2-001 i1-h1-a1-b0
+[50/93] Trace2-001 i1-h1-a1-b1
+[51/93] Trace2-001 i1-h1-a1-b2
+[52/93] Trace2-001 i1-h1-a1-b3
+[53/93] Trace2-001 i2-h0-a0-b0
+[54/93] Trace2-001 i2-h0-a1-b0
+[55/93] Trace2-001 i2-h0-a1-b1
+[56/93] Trace2-001 i2-h0-a1-b2
+[57/93] Trace2-001 i2-h0-a1-b3
+[58/93] Trace2-001 i2-h1-a0-b0
+[59/93] Trace2-001 i2-h1-a1-b0
+[60/93] Trace2-001 i2-h1-a1-b1
+[61/93] Trace2-001 i2-h1-a1-b2
+[62/93] Trace2-001 i2-h1-a1-b3
+[63/93] Trace3-002 lru
+[64/93] Trace3-002 i0-h0-a0-b0
+[65/93] Trace3-002 i0-h0-a1-b0
+[66/93] Trace3-002 i0-h0-a1-b1
+[67/93] Trace3-002 i0-h0-a1-b2
+[68/93] Trace3-002 i0-h0-a1-b3
+[69/93] Trace3-002 i0-h1-a0-b0
+[70/93] Trace3-002 i0-h1-a1-b0
+[71/93] Trace3-002 i0-h1-a1-b1
+[72/93] Trace3-002 i0-h1-a1-b2
+[73/93] Trace3-002 i0-h1-a1-b3
+[74/93] Trace3-002 i1-h0-a0-b0
+[75/93] Trace3-002 i1-h0-a1-b0
+[76/93] Trace3-002 i1-h0-a1-b1
+[77/93] Trace3-002 i1-h0-a1-b2
+[78/93] Trace3-002 i1-h0-a1-b3
+[79/93] Trace3-002 i1-h1-a0-b0
+[80/93] Trace3-002 i1-h1-a1-b0
+[81/93] Trace3-002 i1-h1-a1-b1
+[82/93] Trace3-002 i1-h1-a1-b2
+[83/93] Trace3-002 i1-h1-a1-b3
+[84/93] Trace3-002 i2-h0-a0-b0
+[85/93] Trace3-002 i2-h0-a1-b0
+[86/93] Trace3-002 i2-h0-a1-b1
+[87/93] Trace3-002 i2-h0-a1-b2
+[88/93] Trace3-002 i2-h0-a1-b3
+[89/93] Trace3-002 i2-h1-a0-b0
+[90/93] Trace3-002 i2-h1-a1-b0
+[91/93] Trace3-002 i2-h1-a1-b1
+[92/93] Trace3-002 i2-h1-a1-b2
+[93/93] Trace3-002 i2-h1-a1-b3
+Results: /Users/niral/Desktop/Sem 7/advanced architecture/PA2/pa2/results/task2/full/results.csv
