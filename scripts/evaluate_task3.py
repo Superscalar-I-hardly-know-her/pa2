@@ -105,7 +105,7 @@ def main():
     write_csv(OUT/'aggregates.csv',aggregates)
     (OUT/'summary.json').write_text(json.dumps(dict(rows=rows,aggregates=aggregates),indent=2)+'\n')
     lines=['Task 3: fixed SPP + dynamic I-RRIP','=================================','',
-        'All runs: 25M warmup + 25M measured instructions. Native Apple Clang; GCC 7 validation remains outstanding. SPP uses uniform confidence 2, pattern confidence 1, accuracy boundaries 1/2/4 percent. Dynamic I-RRIP uses the original controller at threshold 0.10 (the best measured Task 2B variant). No joint tuning is performed.', '',
+        'All runs: 25M warmup + 25M measured instructions with GCC 7. SPP uses uniform confidence 2, pattern confidence 1, accuracy boundaries 1/2/4 percent. Dynamic I-RRIP uses the original controller at threshold 0.10 (the best measured Task 2B variant). No joint tuning is performed.', '',
         'The plain combination is an ablation. The Task 3 prefetch-aware version inserts follower data prefetches at RRPV 3, and leaves RRPV unchanged on data-prefetch hits. Demand reuse promotes according to the existing I-RRIP/RRIP mode. RRIP leaders retain their ordinary insertion and promotion rules; only demand LOADs train the controller. DYN_IRRIP_PREFETCH=1 enables this rule; default 0 preserves Task 2 behavior.', '',
         '| Trace | Scheme | IPC | Gain vs baseline | Vs SPP | Vs dynamic | L1D MPKI | L2 MPKI | L2 instruction MPKI | L2 data MPKI | Coverage | Accuracy |',
         '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']

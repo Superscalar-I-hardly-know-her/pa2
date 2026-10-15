@@ -90,10 +90,9 @@ accuracy. Source defaults are retained. Four workers run independent processes;
 results and completed rankings are checkpointed after each run. Matching binary,
 trace metadata, parameter and instruction-count signatures permit resuming.
 
-The sweep uses the explicitly recorded native compiler-check SPP binary; compiler
+The sweep uses the explicitly recorded GCC 7 SPP binary; compiler
 identity is in results/task1/sweep/experiment.json. Existing default-SPP, IP-stride,
-and no-prefetch runs serve as references. This is a native Clang comparison, not
-GCC 7 validation.
+and no-prefetch runs serve as references.
 
 Comparison sanity and storage accounting
 -----------------------------------------

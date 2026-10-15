@@ -1,7 +1,7 @@
 SPP aggressiveness sweep
 ========================
 
-12 configurations: accuracy boundaries 25/50/75, 3/6/12, 1/2/4 percent; uniform confidence 2 or 4; pattern confidence 1 or 2. Accuracy boundaries act on useful / all issued requests. All other predictor behavior is fixed. Each run uses 25M warmup + 25M measured instructions, LRU throughout, four concurrent workers, and Apple Clang (version recorded in experiment.json). These are native Mac experiments, not GCC 7 validation.
+12 configurations: accuracy boundaries 25/50/75, 3/6/12, 1/2/4 percent; uniform confidence 2 or 4; pattern confidence 1 or 2. Accuracy boundaries act on useful / all issued requests. All other predictor behavior is fixed. Each run uses 25M warmup + 25M measured instructions, LRU throughout, and GCC 7 (version recorded in experiment.json).
 
 | Configuration | Geomean IPC gain vs baseline | Versus default SPP | Versus IP-stride | Geomean L1D MPKI | Simulator accuracy |
 |---|---:|---:|---:|---:|---:|

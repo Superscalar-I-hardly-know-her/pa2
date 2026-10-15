@@ -21,4 +21,4 @@ Validation:
   Every parsed metric and cache access/hit/miss counter matches the prior sweep
   exactly. See full-trace-check.json and the three logs.
 
-Validation uses native Apple Clang, consistent with the existing experiments.
+Validation uses GCC 7, consistent with the existing experiments.

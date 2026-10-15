@@ -13,7 +13,7 @@
     "DYN_IRRIP_START": "0",
     "DYN_IRRIP_PERSIST": "0"
   },
-  "compiler": "c++\nApple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "compiler": "g++-7\ng++-7 (Ubuntu 7.5.0-6ubuntu2) 7.5.0\n",
   "binary_sha256": "e66ef089f8f64170a2cc4d73ecc985fdb73b01a3eb1fb353efedafab6ffc1b3e",
   "awareness": "Follower data prefetch insertion at RRPV 3, no promotion on prefetch hits; leaders unchanged"
 }

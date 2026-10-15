@@ -46,11 +46,8 @@ ChampSim measures IPC (instructions per cycle) as its main performance metric. I
 
 ## Compiler selection
 
-The setup below specifies GNU GCC/G++ 7. Native macOS experiments so far used
-Apple Clang, including the Task 1 baseline, SPP, IP-stride and Task 2 runs;
-they have not been validated against GCC 7. The currently selected compiler is
-Apple Clang 21.0.0. `/usr/bin/g++` on this Mac is Clang.
-Homebrew GCC 16.1.0 is installed, but is also a different version from GCC 7.
+The setup below specifies GNU GCC/G++ 7. The reported Task 1 baseline, SPP,
+IP-stride, and Task 2 runs use GCC 7. The compiler is g++-7 (Ubuntu 7.5.0-6ubuntu2) 7.5.0.
 
 The build now prints its compiler and saves its version beside the binary in
 `bin/*.compiler.txt`. To require the README's version on a GCC 7 installation:
@@ -59,11 +56,9 @@ The build now prints its compiler and saves its version beside the binary in
 CXX=g++-7 CHAMPSIM_REQUIRE_GCC7=1 ./build_champsim.sh spp lru task1-spp-gcc7
 ```
 
-The check runs before source/configuration changes and rejects Clang and other
-GCC major versions. Repeat for `no lru`, `ip_stride lru`, `no irrip`, and
-`no dyn_irrip` as needed. Native development builds remain available without the
-strict flag. Comparisons under GCC 7 must use GCC 7 for both baseline and policy;
-existing Clang results should retain their compiler provenance.
+The check runs before source/configuration changes and rejects other compilers
+and other GCC major versions. Repeat for `no lru`, `ip_stride lru`, `no irrip`, and
+`no dyn_irrip` as needed. Comparisons use GCC 7 for both the baseline and the policy.
 
 ## Install GCC 7 on Ubuntu
 
@@ -305,5 +300,4 @@ windows, records compiler/binary/trace provenance, and resumes matching runs.
 No-prefetch LRU, selected standalone SPP, and selected standalone dynamic I-RRIP
 references reuse their completed runs. `results/task3/` contains comparative
 IPC/speedup, prefetch accuracy, coverage, L1D/L2/L2-instruction/L2-data LOAD MPKI,
-raw counters, logs, and PNG/PDF plots. Native results use Clang; GCC 7 validation
-remains a separate outstanding check.
+raw counters, logs, and PNG/PDF plots. The reported runs use GCC 7.
