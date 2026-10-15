@@ -15,6 +15,7 @@ uint32_t CACHE::get_size(uint8_t, uint64_t) { std::abort(); }
 int main()
 {
     CACHE cache("test", L2C_SET, L2C_WAY, L2C_SET*L2C_WAY, 1, 1, 1, 1);
+    unsetenv("DYN_IRRIP_PREFETCH");
     unsetenv("DYN_IRRIP_START");
     unsetenv("DYN_IRRIP_PERSIST");
     cache.l2c_initialize_replacement();
@@ -172,5 +173,36 @@ int main()
     assert(!prioritize_instructions);
     for (unsigned set : {0u, 1u})
         for (unsigned w = 0; w < L2C_WAY; ++w) assert(rrpv[set][w] == 3);
+    // Task 3 awareness is optional; demand behavior and RRIP leaders are retained.
+    setenv("DYN_IRRIP_PREFETCH", "1", 1);
+    cache.l2c_initialize_replacement();
+    warmup_complete[0] = 1;
+    for (bool mode : {false, true}) {
+        prioritize_instructions = mode;
+        cache.block[1][0].instruction = 0;
+        update(1, PREFETCH, false, false);
+        assert(rrpv[1][0] == 3);
+        update(1, PREFETCH, true, false);
+        assert(rrpv[1][0] == 3);
+        update(1, LOAD, true, false);
+        assert(rrpv[1][0] == (mode ? 1 : 0));
+        update(1, PREFETCH, true, false);
+        assert(rrpv[1][0] == (mode ? 1 : 0));
+        update(0, PREFETCH, false, false);
+        assert(rrpv[0][0] == 2);
+        update(0, PREFETCH, true, false);
+        assert(rrpv[0][0] == 0);
+        update(1, PREFETCH, false, true); // Does not demote instruction prefetches.
+        assert(rrpv[1][0] == 2);
+        cache.block[1][0].instruction = 1;
+        update(1, LOAD, true, true);
+        assert(rrpv[1][0] == 0);
+    }
+    assert(roi_prefetch_fills == 2 && roi_prefetch_hits == 4);
+    assert(instruction_accesses + data_accesses == 0);
+    unsetenv("DYN_IRRIP_PREFETCH");
+    cache.l2c_initialize_replacement();
+    update(1, PREFETCH, false, false);
+    assert(rrpv[1][0] == 2); // Task 2 remains the default.
     cout << "Dynamic I-RRIP tests passed" << endl;
 }

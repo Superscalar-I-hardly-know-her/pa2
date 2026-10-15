@@ -1,0 +1,52 @@
+{
+  "signature": {
+    "binary_sha256": "e66ef089f8f64170a2cc4d73ecc985fdb73b01a3eb1fb353efedafab6ffc1b3e",
+    "trace": "traces/Trace3-002.gz",
+    "size": 4052315127,
+    "mtime_ns": 1792054053180543294,
+    "warmup": 25000000,
+    "measured": 25000000,
+    "parameters": {
+      "SPP_UNIFORM_CONF": "2",
+      "SPP_PATTERN_CONF": "1",
+      "SPP_ACCURACY_LOW": "1",
+      "SPP_ACCURACY_MID": "2",
+      "SPP_ACCURACY_HIGH": "4",
+      "DYN_IRRIP_THRESHOLD": "0.10",
+      "DYN_IRRIP_START": "0",
+      "DYN_IRRIP_PERSIST": "0",
+      "DYN_IRRIP_PREFETCH": "0"
+    }
+  },
+  "seconds": 56.843872583,
+  "metrics": {
+    "instructions": 25000001,
+    "cycles": 64565568,
+    "ipc": 0.38720330006234904,
+    "l1d_load_mpki": 3.215039871398405,
+    "l1i_load_mpki": 2.1251999149920033,
+    "l2c_load_mpki": 3.5919598563216057,
+    "llc_load_mpki": 2.6971598921136044,
+    "requested": 265240,
+    "issued": 265240,
+    "useful": 5353,
+    "useless": 8800,
+    "lower_level_prefetches": 17292,
+    "timely": 5353,
+    "late": 3157,
+    "dropped": 0,
+    "simulator_accuracy": 0.3095651168170252,
+    "useful_per_issued": 0.020181722213844067,
+    "prefetch_accesses": 112503,
+    "prefetch_hits": 98368,
+    "prefetch_misses": 14135,
+    "prefetch_hit_fraction": 0.8743589059847293,
+    "l2_instruction_mpki": 0.6362,
+    "l2_data_mpki": 2.95576,
+    "windows": 4,
+    "switches": 1,
+    "roi_irrip_fraction": 1.0,
+    "roi_prefetch_fills": 0,
+    "roi_prefetch_hits": 0
+  }
+}

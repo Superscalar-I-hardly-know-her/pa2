@@ -1,0 +1,52 @@
+{
+  "signature": {
+    "binary_sha256": "e66ef089f8f64170a2cc4d73ecc985fdb73b01a3eb1fb353efedafab6ffc1b3e",
+    "trace": "traces/Trace2-001.gz",
+    "size": 5256405095,
+    "mtime_ns": 1792054118708675781,
+    "warmup": 25000000,
+    "measured": 25000000,
+    "parameters": {
+      "SPP_UNIFORM_CONF": "2",
+      "SPP_PATTERN_CONF": "1",
+      "SPP_ACCURACY_LOW": "1",
+      "SPP_ACCURACY_MID": "2",
+      "SPP_ACCURACY_HIGH": "4",
+      "DYN_IRRIP_THRESHOLD": "0.10",
+      "DYN_IRRIP_START": "0",
+      "DYN_IRRIP_PERSIST": "0",
+      "DYN_IRRIP_PREFETCH": "0"
+    }
+  },
+  "seconds": 61.041262124999996,
+  "metrics": {
+    "instructions": 25000001,
+    "cycles": 94644433,
+    "ipc": 0.2641465557725936,
+    "l1d_load_mpki": 13.17747947290082,
+    "l1i_load_mpki": 40.023438399062464,
+    "l2c_load_mpki": 19.997599200096033,
+    "llc_load_mpki": 7.902479683900813,
+    "requested": 489490,
+    "issued": 488660,
+    "useful": 12311,
+    "useless": 12088,
+    "lower_level_prefetches": 24767,
+    "timely": 12311,
+    "late": 344,
+    "dropped": 0,
+    "simulator_accuracy": 0.4970727177292365,
+    "useful_per_issued": 0.0251933859943519,
+    "prefetch_accesses": 227383,
+    "prefetch_hits": 202966,
+    "prefetch_misses": 24417,
+    "prefetch_hit_fraction": 0.8926173020850283,
+    "l2_instruction_mpki": 8.25812,
+    "l2_data_mpki": 11.7395,
+    "windows": 14,
+    "switches": 3,
+    "roi_irrip_fraction": 1.0,
+    "roi_prefetch_fills": 0,
+    "roi_prefetch_hits": 0
+  }
+}

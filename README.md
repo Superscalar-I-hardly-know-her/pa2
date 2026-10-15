@@ -273,3 +273,37 @@ Original results stay in `results/task2b/full/`; follow-up results go under
 the original binary and builds a separate binary for the variants. The combined
 report/figures under `results/task2b/variant-comparison/` compare each method's
 best threshold and provide matched-threshold comparisons to isolate the changes.
+
+## Task 3: fixed SPP + dynamic I-RRIP
+
+The combination fixes SPP to the Task 1 sweep winner (uniform confidence 2,
+pattern confidence 1, accuracy boundaries 1/2/4 percent) and dynamic I-RRIP to
+the best measured Task 2B variant (original controller, threshold 0.10).
+Neither component is retuned jointly.
+
+`DYN_IRRIP_PREFETCH=1` adds one prefetch-aware rule in follower sets: data
+PREFETCH fills enter at RRPV 3; PREFETCH hits leave the resident RRPV unchanged.
+A later demand hit uses the existing mode's promotion rule. This gives
+speculative data little retention until demand establishes reuse and prevents
+repeated speculative requests from protecting a resident line. RRIP leaders
+retain their existing rules. Prefetches never train the demand-only controller.
+The flag defaults to zero, preserving Task 2 behavior. ROI prefetch-aware fill
+and hit counts appear in `DYN_SUMMARY`.
+
+```bash
+./build_champsim.sh spp dyn_irrip task3-combined
+c++ -std=c++11 -O2 -Iinc tests/test_dyn_irrip.cc -o /tmp/test_dyn_irrip
+/tmp/test_dyn_irrip
+python3 scripts/evaluate_task3.py
+MPLCONFIGDIR=.cache/matplotlib XDG_CACHE_HOME=.cache .venv/bin/python scripts/plot_task3.py
+```
+
+The evaluation runs six simulations with up to four workers: plain combination
+and prefetch-aware combination on each trace, at 25M warmup + 25M measured
+instructions. It sets every selected parameter explicitly, validates controller
+windows, records compiler/binary/trace provenance, and resumes matching runs.
+No-prefetch LRU, selected standalone SPP, and selected standalone dynamic I-RRIP
+references reuse their completed runs. `results/task3/` contains comparative
+IPC/speedup, prefetch accuracy, coverage, L1D/L2/L2-instruction/L2-data LOAD MPKI,
+raw counters, logs, and PNG/PDF plots. Native results use Clang; GCC 7 validation
+remains a separate outstanding check.
